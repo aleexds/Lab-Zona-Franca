@@ -1,14 +1,18 @@
-async function obtenerSolicitudes() {
-try {
+const API_URL = 'http://localhost:3000/usuarios';
 
-    const respuesta = await fetch('http://localhost:3001/solicitudes');
+export async function obtenerUsuarioPorUsername(username) {
+  try {
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+      throw new Error('Error al conectar con el servidor.');
+    }
+    const usuarios = await response.json();
     
-    if (!respuesta.ok) throw new Error('Error al consultar las solicitudes');
-
-    const listaSolicitudes = await respuesta.json();
-    console.log("Solicitudes desde db.json:", listaSolicitudes);
-
-} catch (error) {
-    console.error("No se pudieron cargar los datos:", error);
-}
+    // Filtrado exacto dentro de JS
+    const usuarioEncontrado = usuarios.find(u => u.username.toLowerCase() === username.toLowerCase());
+    return usuarioEncontrado || null;
+  } catch (error) {
+    console.error('Error en obtenerUsuarioPorUsername:', error);
+    throw error;
+  }
 }

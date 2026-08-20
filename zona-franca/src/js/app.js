@@ -1,61 +1,61 @@
-let rolSeleccionado = 'admin'; // Rol por defecto
+import { obtenerUsuarioPorUsername } from '../services/indexServices.js';
 
-// 1. Cambiar estado visual de las pestañas de Rol
-function seleccionarRol(rol, elemento) {
+let rolPestañaActiva = 'admin';
+
+window.seleccionarRol = function (rol, elemento) {
   document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
   elemento.classList.add('active');
-  
-  // Mapeo visual a rol interno
-  if (rol === 'Empresa') rolSeleccionado = 'cliente';
-  else rolSeleccionado = 'admin'; 
-}
 
-// 2. Evento de inicio de sesión
-document.getElementById('formLogin').addEventListener('submit', async function (e) {
-  e.preventDefault();
+  if (rol === 'Empresa') {
+    rolPestañaActiva = 'cliente';
+  } else {
+    rolPestañaActiva = 'admin';
+  }
+};
 
-  const usernameInput = document.getElementById('username').value.trim();
-  const passwordInput = document.getElementById('password').value.trim();
+document.addEventListener('DOMContentLoaded', () => {
+  const formLogin = document.getElementById('formLogin');
   const mensajeDiv = document.getElementById('mensajeEstado');
 
-  mensajeDiv.style.color = "blue";
-  mensajeDiv.textContent = "Verificando credenciales...";
+  if (formLogin) {
+    formLogin.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-  try {
-    // Consulta asíncrona a db.json
-    const response = await fetch(`http://localhost:3001/usuarios?username=${encodeURIComponent(usernameInput)}`);
-    
-    if (!response.ok) throw new Error("Error de comunicación con el servidor.");
+      const usernameInput = document.getElementById('username').value.trim();
+      const passwordInput = document.getElementById('password').value.trim();
 
-    const usuarios = await response.json();
+      mensajeDiv.style.color = '#004481';
+      mensajeDiv.textContent = 'Verificando credenciales...';
 
-    // Validar usuario y contraseña
-    if (usuarios.length === 0 || usuarios[0].password !== passwordInput) {
-      mensajeDiv.style.color = "red";
-      mensajeDiv.textContent = "Credenciales incorrectas.";
-      return;
-    }
+      try {
+        const usuario = await obtenerUsuarioPorUsername(usernameInput);
 
-    const usuario = usuarios[0];
+        console.log('Usuario obtenido de la DB:', usuario); // Debugger para verificar en consola
 
-    // Guardar sesión local
-    localStorage.setItem('usuarioSesion', JSON.stringify(usuario));
+        if (!usuario || usuario.password !== passwordInput) {
+          mensajeDiv.style.color = '#e53e3e';
+          mensajeDiv.textContent = 'Credenciales incorrectas.';
+          return;
+        }
 
-    mensajeDiv.style.color = "green";
-    mensajeDiv.textContent = `¡Bienvenido! Redirigiendo a panel de ${usuario.rol}...`;
+        localStorage.setItem('usuarioSesion', JSON.stringify(usuario));
 
-    // Redirección según rol obtenido del JSON
-    setTimeout(() => {
-      if (usuario.rol === 'admin') {
-        window.location.href = 'admin-dashboard.html';
-      } else {
-        window.location.href = 'cliente-dashboard.html';
+        mensajeDiv.style.color = '#38a169';
+        mensajeDiv.textContent = `¡Bienvenido! Redirigiendo a panel de ${usuario.rol}...`;
+
+        // REDIRECCIÓN CON RUTA ABSOLUTA LOCAL
+        setTimeout(() => {
+          if (usuario.rol === 'admin') {
+            window.location.assign('./src/pages/admin.html'); // Usar assign con ./ asegura el cambio de ruta
+          } else if (usuario.rol === 'cliente') {
+            window.location.assign('./src/pages/cliente.html');
+          }
+        }, 1000);
+
+      } catch (error) {
+        mensajeDiv.style.color = '#e53e3e';
+        mensajeDiv.textContent = 'Error al conectar con el servidor (Asegúrese que json-server esté corriendo).';
       }
-    }, 1000);
-
-  } catch (error) {
-    console.error(error);
-    mensajeDiv.style.color = "red";
-    mensajeDiv.textContent = "No se pudo conectar con json-server (Puerto 3001).";
+    });
   }
 });
