@@ -1,33 +1,66 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>zona-franca</title>
-  </head>
-  <body>
-    <form id="formularioSolicitud">
-  <label for="empresa">Nombre de la Empresa:</label>
-  <input type="text" id="empresa" required>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Gestión y Cumplimiento - ZoFranca CR</title>
+  <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
 
-  <label for="sector">Sector:</label>
-  <select id="sector">
-    <option value="tecnologia">Tecnología</option>
-    <option value="manufactura">Manufactura</option>
-    <option value="bpo">Servicios (BPO)</option>
-  </select>
+  <div class="login-card">
+    <div class="logo-container">
+      <span class="logo-text">🛡️ ZoFranca</span>
+    </div>
 
-  <label for="inversion">Inversión Proyectada ($):</label>
-  <input type="number" id="inversion" required>
+    <h1 class="title">Portal de Gestión y Cumplimiento</h1>
+    <div class="sub-brand">ZOFRANCA CR</div>
+    <p class="subtitle">Inicie sesión para acceder al sistema</p>
 
-  <label for="empleos">Empleos Proyectados:</label>
-  <input type="number" id="empleos" required>
+    <div class="role-selector">
+      <button type="button" class="role-btn" onclick="seleccionarRol('Empresa', this)">Empresa</button>
+      <button type="button" class="role-btn" onclick="seleccionarRol('Admin', this)">Admin</button>
+    </div>
 
-  <button type="submit" id="btnEnviar">Enviar Solicitud</button>
-</form>
+    <form id="formLogin">
+      <div class="form-group">
+        <label for="username">Correo Electrónico / Usuario</label>
+        <div class="input-wrapper">
+          <span class="input-icon">👤</span>
+          <input type="text" id="username" placeholder="usuario@empresa.com" required>
+        </div>
+      </div>
 
-<!-- Elemento para mostrar estados de carga o mensajes de error (RF-10, RF-11) -->
-<div id="mensajeEstado"></div>
+      <div class="form-group">
+        <div class="label-row">
+          <label for="password">Contraseña</label>
+          <a href="#" class="forgot-link">¿Olvidó su contraseña?</a>
+        </div>
+        <div class="input-wrapper">
+          <span class="input-icon">🔒</span>
+          <input type="password" id="password" placeholder="••••••••" required>
+          <span class="toggle-password">👁️</span>
+        </div>
+      </div>
 
-<script src="src/js/app.js"></script>
+      <div class="checkbox-group">
+        <input type="checkbox" id="recordar">
+        <label for="recordar">Recordar mi usuario</label>
+      </div>
+
+      <button type="submit" class="btn-submit">
+        Iniciar Sesión <span>→</span>
+      </button>
+    </form>
+
+    <div id="mensajeEstado"></div>
+  </div>
+
+  <div class="footer-text">
+    Plataforma oficial de seguimiento y pre-clasificación con IA<br>
+    <strong>PROCOMER CR</strong>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>
