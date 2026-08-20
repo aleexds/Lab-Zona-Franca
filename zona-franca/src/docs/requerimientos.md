@@ -656,3 +656,212 @@ Los requerimientos funcionales, requerimientos no funcionales, reglas de negocio
 La matriz de trazabilidad permite relacionar las necesidades de los usuarios con los requerimientos funcionales y sus criterios de aceptación.
 
 Además, la propuesta de escalabilidad establece una base para incorporar nuevas zonas francas, reportes e integraciones en futuras versiones.
+5. Diseño de la solución
+
+El diseño de la solución describe cómo ZoFranca CR transformará el proceso manual actual en un proceso digital y centralizado. La propuesta busca reducir la transcripción manual, mejorar la trazabilidad, facilitar la revisión de solicitudes y detectar oportunamente posibles incumplimientos.
+
+La solución estará compuesta por un frontend web, un backend simulado mediante json-server, procesamiento asíncrono en JavaScript y un componente de inteligencia artificial utilizado como apoyo para la preclasificación de solicitudes.
+
+5.1 Proceso manual — Situación actual
+
+Actualmente, la gestión de solicitudes y reportes de cumplimiento puede depender de correos electrónicos, documentos y hojas de cálculo. Este proceso requiere intervención manual por parte de los analistas y puede generar retrasos, errores y dificultades para mantener la trazabilidad.
+
+El proceso actual se describe de la siguiente manera:
+
+Una empresa interesada prepara y envía su solicitud de instalación mediante correo electrónico junto con los documentos requeridos.
+Un analista de la administración recibe los archivos, los abre y revisa manualmente la información proporcionada.
+El analista identifica los datos principales de la solicitud y los transcribe manualmente a una hoja de cálculo.
+El analista compara la información de la empresa, como inversión y empleos proyectados, con los criterios establecidos para el proceso.
+Si existen inconsistencias o información que requiere mayor revisión, el analista realiza un análisis adicional.
+El resultado de la revisión se registra y la respuesta correspondiente se comunica a la empresa.
+Una vez instalada la empresa, esta presenta periódicamente reportes de cumplimiento con información sobre empleos, inversión y exportaciones.
+El analista recibe y revisa los reportes, consolidando nuevamente la información en hojas de cálculo.
+Los resultados reales se comparan manualmente con los compromisos originales de la empresa.
+Cuando existen diferencias significativas, el analista determina si representan un posible incumplimiento y registra el resultado.
+Problemas detectados
+
+A partir de este proceso se identifican los siguientes problemas:
+
+Lentitud en la revisión y procesamiento de solicitudes.
+Errores de digitación y transcripción manual.
+Información distribuida entre correos, documentos y hojas de cálculo.
+Posibles diferencias de criterio entre analistas.
+Dificultad para consultar el historial de una solicitud.
+Detección tardía de posibles incumplimientos.
+Falta de alertas automáticas.
+Dificultad para realizar auditorías.
+Baja trazabilidad de las acciones realizadas.
+Dependencia de tareas manuales repetitivas.
+5.2 Proceso automatizado — Situación propuesta
+
+ZoFranca CR propone sustituir las principales actividades manuales por un proceso centralizado mediante una plataforma web.
+
+El proceso automatizado funcionará de la siguiente manera:
+
+La empresa completa una solicitud mediante un formulario web diseñado previamente en Stitch.
+El sistema valida que los campos obligatorios de la solicitud estén completos antes de permitir su envío.
+La información se envía de forma asíncrona al backend mediante operaciones realizadas con JavaScript y async/await.
+El backend simulado mediante json-server almacena la información en db.json, permitiendo que los datos permanezcan disponibles después de recargar la página.
+El sistema envía los datos relevantes de la solicitud al componente de inteligencia artificial.
+La inteligencia artificial analiza la información proporcionada y devuelve un puntaje de afinidad entre 0 y 100, acompañado de una clasificación inicial y una justificación.
+El sistema utiliza los rangos definidos para generar una clasificación inicial:
+80–100: Recomendada.
+50–79: Revisar.
+0–49: Rechazada.
+La clasificación generada por la IA se presenta al analista junto con la información de la solicitud para facilitar su revisión.
+El analista humano revisa la información y puede confirmar, modificar o rechazar la recomendación generada por la IA.
+La decisión final queda registrada en el sistema junto con la fecha y las acciones realizadas, manteniendo la trazabilidad.
+Una vez instalada la empresa, esta puede registrar y enviar sus reportes periódicos de cumplimiento mediante la plataforma.
+El sistema procesa los reportes de forma asíncrona y compara automáticamente los resultados reales con los compromisos originales.
+El sistema verifica los indicadores de empleo, inversión y exportaciones.
+Cuando alguno de los indicadores se encuentra por debajo del 80 % del compromiso establecido, el sistema genera una alerta visible para el analista.
+El analista puede consultar las alertas, revisar la información correspondiente y registrar las acciones realizadas.
+Cuando existan operaciones independientes que puedan ejecutarse simultáneamente, el sistema podrá utilizar Promise.all() para procesarlas en paralelo.
+5.3 Flujo general de la solución
+
+El funcionamiento general de ZoFranca CR puede representarse mediante el siguiente flujo:
+
+Empresa
+
+↓
+
+Formulario web
+
+↓
+
+Validación de datos
+
+↓
+
+Backend — json-server
+
+↓
+
+Procesamiento asíncrono
+
+↓
+
+Componente de IA
+
+↓
+
+Puntaje + clasificación + justificación
+
+↓
+
+Analista humano
+
+↓
+
+Decisión final
+
+↓
+
+Registro y trazabilidad
+
+↓
+
+Seguimiento de cumplimiento
+
+↓
+
+Comparación de resultados
+
+↓
+
+Alertas de posibles incumplimientos
+
+5.4 Comparación entre el proceso actual y la solución propuesta
+Proceso actual	ZoFranca CR
+Solicitudes recibidas por correo	Solicitudes mediante formulario web
+Documentos revisados manualmente	Información centralizada en la plataforma
+Transcripción a Excel	Registro digital mediante json-server
+Comparaciones manuales	Comparaciones automáticas
+Criterios variables	Parámetros definidos para el prototipo
+Revisión manual de todas las solicitudes	Preclasificación mediante IA
+Decisión sin apoyo automatizado	IA como apoyo al analista
+Reportes recibidos por correo	Reportes registrados en la plataforma
+Comparación manual de cumplimiento	Comparación automática
+Detección tardía	Alertas automáticas
+Historial distribuido	Historial centralizado
+Difícil trazabilidad	Registro de acciones y decisiones
+5.5 Participación de la inteligencia artificial
+
+La inteligencia artificial tendrá una función de apoyo, no de decisión definitiva.
+
+Para cada solicitud, el componente de IA recibirá información como:
+
+Sector de la empresa.
+Inversión proyectada.
+Empleos proyectados.
+Exportaciones proyectadas.
+Información disponible de la solicitud.
+
+Con estos datos, el componente generará un puntaje simulado entre 0 y 100 y una clasificación inicial.
+
+La IA no podrá aprobar ni rechazar definitivamente una solicitud.
+
+El flujo de decisión será:
+
+Solicitud → IA → Recomendación → Analista → Decisión final
+
+Esto garantiza que la automatización facilite el trabajo del analista sin sustituir su responsabilidad.
+
+5.6 Manejo de alertas
+
+El sistema utilizará los parámetros simulados definidos para el prototipo.
+
+Cuando una empresa presente un reporte de cumplimiento, el sistema comparará los resultados reales con los compromisos registrados originalmente.
+
+Si alguno de los siguientes indicadores es inferior al 80 % del compromiso, se generará una alerta:
+
+Empleos.
+Inversión.
+Exportaciones.
+
+Por ejemplo:
+
+Compromiso de empleos: 100
+Empleos reportados: 70
+Cumplimiento: 70 %
+
+Como el resultado es inferior al 80 %, el sistema generará una alerta para revisión del analista.
+
+Las alertas no representarán automáticamente una sanción o rechazo. Su función será identificar casos que requieren revisión humana.
+
+5.7 Procesamiento asíncrono
+
+Las operaciones que impliquen comunicación con el backend o con el componente de inteligencia artificial se realizarán de forma asíncrona.
+
+Se utilizarán:
+
+Promesas.
+async/await.
+try/catch.
+Promise.all() cuando existan operaciones independientes.
+
+Durante las operaciones se mostrará un indicador de estado como:
+
+"Cargando...", "Procesando..." o "Guardando información..."
+
+En caso de producirse un error, el sistema mostrará un mensaje comprensible para el usuario y permitirá continuar utilizando la interfaz.
+
+5.8 Resultado esperado
+
+Con la implementación de ZoFranca CR se espera lograr:
+
+Reducir la transcripción manual de información.
+Centralizar solicitudes y reportes.
+Facilitar la revisión de los analistas.
+Reducir errores de digitación.
+Estandarizar los criterios utilizados en el prototipo.
+Automatizar la comparación de compromisos y resultados.
+Detectar posibles incumplimientos de manera oportuna.
+Generar alertas automáticas.
+Mantener un historial de acciones y decisiones.
+Utilizar la IA como apoyo para priorizar y revisar solicitudes.
+Mantener la decisión final bajo responsabilidad humana.
+
+De esta manera, ZoFranca CR permitirá transformar un proceso principalmente manual en un flujo digital, centralizado, verificable y con mayor trazabilidad, manteniendo el alcance definido para el prototipo académico.
+
+ 
