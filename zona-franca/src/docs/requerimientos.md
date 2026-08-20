@@ -1,67 +1,117 @@
+DOCUMENTO DE REQUERIMIENTOS — ZOFRANCA CR
+1. Introducción y objetivos
+1.1 Introducción
+
+En las zonas francas de Costa Rica, la gestión de solicitudes de instalación y el seguimiento del cumplimiento de las empresas puede involucrar procesos manuales, hojas de cálculo y comunicaciones por correo electrónico.
+
+El proceso requiere revisar documentos, registrar información, comparar compromisos con resultados y comunicar las decisiones correspondientes. Esta forma de trabajo puede generar retrasos, errores de transcripción, diferencias de criterio entre analistas y dificultades para mantener una trazabilidad completa.
+
+El proyecto ZoFranca CR propone una plataforma web que permita centralizar y automatizar parte de este proceso. La solución utilizará procesamiento asíncrono mediante JavaScript, un backend simulado con Node.js y json-server, y un componente de inteligencia artificial para realizar una preclasificación de solicitudes y generar alertas.
+
+La inteligencia artificial funcionará como herramienta de apoyo y no tomará la decisión final. La aprobación, modificación o rechazo de una solicitud permanecerá siempre bajo responsabilidad de un analista humano.
+
+1.2 Objetivo general
+
+Diseñar y construir una primera versión funcional de una plataforma web para gestionar solicitudes de instalación y reportes de cumplimiento de empresas de zonas francas, utilizando procesamiento asíncrono en JavaScript, un backend simulado con json-server y un componente de inteligencia artificial que apoye la clasificación y detección de alertas.
+
+1.3 Objetivos específicos
+Aplicar técnicas de levantamiento de requerimientos para comprender el problema.
+Analizar el proceso manual actual de solicitudes y cumplimiento.
+Definir los requerimientos funcionales y no funcionales del sistema.
+Validar los requerimientos mediante una IA revisora.
+Diseñar los mockups de la plataforma antes de programar la interfaz.
+Implementar operaciones asíncronas mediante Promesas, async/await y Promise.all().
+Conectar el frontend con un backend simulado mediante Node.js y json-server.
+Incorporar un componente de IA para la preclasificación de solicitudes.
+Generar alertas automáticas ante posibles incumplimientos.
+Mantener la decisión final bajo responsabilidad de un analista humano.
+Registrar información suficiente para mantener la trazabilidad.
+Trabajar colaborativamente mediante GitHub, ramas y pull requests.
+Dar seguimiento al desarrollo mediante un tablero de Trello.
+Proponer posibilidades de crecimiento futuro de la plataforma.
+2. Descripción del caso
+2.1 Caso: ZoFranca CR
+
+El proyecto se desarrolla a partir de la problemática relacionada con la administración de empresas que solicitan instalarse o que ya operan dentro del régimen de zonas francas.
+
+Actualmente, el proceso puede requerir revisar documentos manualmente, transcribir información a hojas de cálculo, comparar compromisos con resultados y enviar respuestas por correo electrónico.
+
+Entre los principales problemas identificados se encuentran:
+
+Procesos lentos.
+Errores de transcripción.
+Información distribuida.
+Criterios inconsistentes.
+Detección tardía de incumplimientos.
+Falta de alertas automáticas.
+Baja trazabilidad.
+Dificultad para realizar auditorías.
+
+ZoFranca CR busca centralizar esta información y automatizar tareas repetitivas, manteniendo siempre la supervisión humana.
+
 3. Fase de levantamiento de requerimientos
-La fase de levantamiento de requerimientos tiene como propósito comprender detalladamente la problemática actual relacionada con la gestión de solicitudes de instalación y el seguimiento del cumplimiento de las empresas que operan bajo el régimen de zonas francas en Costa Rica.
-Para conocer las necesidades del sistema antes de iniciar el desarrollo, se aplicaron cinco técnicas: análisis del enunciado, entrevista simulada, observación del proceso actual, definición de reglas de negocio y elaboración de un glosario del dominio.
+
+La fase de levantamiento de requerimientos tiene como propósito comprender detalladamente la problemática relacionada con la gestión de solicitudes de instalación y el seguimiento del cumplimiento de las empresas que operan bajo el régimen de zonas francas.
+
+Para conocer las necesidades del sistema antes de iniciar el desarrollo, se aplicaron cinco técnicas:
+
+Análisis del enunciado.
+Entrevista simulada.
+Observación del proceso actual.
+Definición de reglas de negocio.
+Elaboración de un glosario del dominio.
 3.1 Análisis del enunciado
 
-Mediante el análisis del caso “ZoFranca CR”, se identificaron los principales verbos, sustantivos y conceptos que permiten determinar las funciones, usuarios, datos y necesidades que deberá contemplar la plataforma.
+Mediante el análisis del caso ZoFranca CR, se identificaron los principales verbos, sustantivos y conceptos que permiten determinar las funciones, usuarios, datos y necesidades que deberá contemplar la plataforma.
+
 Verbos o acciones identificadas
-Entre las principales acciones identificadas en el enunciado se encuentran:
-Administrar
-Operar
-Instalarse
-Presentar
-Solicitar
-Revisar
-Leer
-Transcribir
-Comparar
-Cumplir
-Responder
-Reportar
-Consolidar
-Detectar
-Recibir
-Procesar
-Pre-clasificar
-Generar alertas
-Analizar
-Registrar
-Decidir
+Administrar.
+Operar.
+Instalarse.
+Presentar.
+Solicitar.
+Revisar.
+Leer.
+Transcribir.
+Comparar.
+Cumplir.
+Responder.
+Reportar.
+Consolidar.
+Detectar.
+Recibir.
+Procesar.
+Preclasificar.
+Generar alertas.
+Analizar.
+Registrar.
+Decidir.
 
-Estas acciones permiten identificar varias funcionalidades necesarias para la plataforma, como registrar solicitudes, procesar información, analizar datos, generar alertas y permitir la revisión de un analista.
+Estas acciones permiten identificar funcionalidades como registrar solicitudes, procesar información, analizar datos, generar alertas y permitir la revisión de un analista.
+
 Sustantivos y elementos identificados
-
-
-
-
-
-
-
-Los principales elementos encontrados fueron:
-Empresa
-Zona franca
-Solicitud
-Inversión
-Empleos
-Sector
-Documentos
-Analista
-Reporte
-Cumplimiento
-Exportaciones
-Hoja de cálculo
-Excel
-Correo electrónico
-Plataforma
-Inteligencia artificial
-Alertas
-Auditoría
-
-
-
-
+Empresa.
+Zona franca.
+Solicitud.
+Inversión.
+Empleos.
+Sector.
+Documentos.
+Analista.
+Reporte.
+Cumplimiento.
+Exportaciones.
+Hoja de cálculo.
+Excel.
+Correo electrónico.
+Plataforma.
+Inteligencia artificial.
+Alertas.
+Auditoría.
 Hallazgos
+
 A partir del análisis realizado se determinaron los siguientes hallazgos:
+
 El sistema debe permitir registrar información de las empresas.
 Las empresas deben poder presentar solicitudes de instalación.
 Las solicitudes deben incluir información sobre inversión, empleos, sector y documentación de respaldo.
@@ -72,359 +122,537 @@ Las empresas deben presentar reportes periódicos de cumplimiento.
 El sistema debe comparar los compromisos proyectados con los resultados reales.
 Se deben detectar posibles incumplimientos.
 La plataforma debe generar alertas cuando se identifiquen situaciones que requieran revisión.
-La inteligencia artificial debe apoyar la pre-clasificación y análisis de la información.
+La inteligencia artificial debe apoyar la preclasificación y análisis de la información.
 La decisión final debe permanecer bajo responsabilidad de un analista humano.
 El sistema debe mantener un historial de las acciones realizadas para facilitar la trazabilidad.
 El procesamiento debe realizarse de forma asíncrona para evitar bloquear la interfaz.
 La solución debe estar diseñada para permitir futuras ampliaciones.
-
-
-
-
 3.2 Entrevista simulada
-Para complementar el análisis del enunciado, se realizó una entrevista simulada a la administración responsable de gestionar las solicitudes y el cumplimiento de las empresas.
-Entrevistado: Administración de la zona franca
-Entrevistadores: Equipo desarrollador de ZoFranca CR
-Tipo de entrevista: Simulada
+
+Entrevistado: Administración responsable de gestionar solicitudes y cumplimiento.
+
+Entrevistadores: Equipo desarrollador de ZoFranca CR.
+
+Tipo: Entrevista simulada.
+
 Objetivo: Identificar necesidades, problemas, reglas y expectativas relacionadas con el proceso.
-Pregunta 1. ¿Cómo se reciben actualmente las solicitudes de las empresas?
 
-Respuesta: Actualmente las solicitudes pueden involucrar documentos y comunicaciones por correo electrónico. La información debe ser revisada y posteriormente trasladada manualmente a hojas de cálculo para su análisis y seguimiento.
+Pregunta 1. ¿Cómo se reciben actualmente las solicitudes?
 
-Pregunta 2. ¿Qué información debe presentar una empresa al solicitar su instalación?
+Respuesta: Las solicitudes pueden involucrar documentos y comunicaciones por correo electrónico. La información posteriormente debe ser revisada y trasladada manualmente a hojas de cálculo para su análisis y seguimiento.
 
-Respuesta: La empresa debe proporcionar información general de identificación, sector al que pertenece, inversión proyectada, cantidad de empleos que espera generar, exportaciones proyectadas y documentación de respaldo legal y fiscal.
+Pregunta 2. ¿Qué información debe presentar una empresa?
 
-Pregunta 3. ¿Quién se encarga de revisar las solicitudes?
+Respuesta: Debe proporcionar información general de identificación, sector, inversión proyectada, empleos proyectados, exportaciones proyectadas y documentación de respaldo legal y fiscal.
+
+Pregunta 3. ¿Quién revisa las solicitudes?
 
 Respuesta: Las solicitudes son revisadas por analistas encargados de verificar la información proporcionada y determinar si se cumplen los criterios establecidos.
 
-Pregunta 4. ¿Cuáles son los principales problemas del proceso actual?
+Pregunta 4. ¿Cuáles son los principales problemas?
 
-Respuesta: Los principales problemas son los tiempos prolongados de revisión, errores de transcripción, información distribuida en diferentes archivos, criterios que pueden variar entre analistas y dificultad para consultar el historial de una solicitud.
+Respuesta: Los principales problemas son los tiempos prolongados de revisión, errores de transcripción, información distribuida, criterios que pueden variar entre analistas y dificultad para consultar el historial.
 
 Pregunta 5. ¿Qué sucede después de que una empresa es instalada?
 
-Respuesta: La empresa debe cumplir con los compromisos establecidos y presentar periódicamente información que permita comprobar su desempeño, incluyendo aspectos como empleo, inversión y exportaciones.
+Respuesta: La empresa debe cumplir con los compromisos establecidos y presentar periódicamente información sobre empleo, inversión y exportaciones.
 
-Pregunta 6. ¿Qué información debe incluir un reporte de cumplimiento?
+Pregunta 6. ¿Qué información debe incluir un reporte?
 
-Respuesta: El reporte debe incluir los resultados reales de la empresa, principalmente la cantidad de empleos generados, inversión realizada y exportaciones, además de cualquier observación o información adicional requerida.
+Respuesta: El reporte debe incluir empleos reales, inversión ejecutada y exportaciones, además de cualquier observación requerida.
 
-Pregunta 7. ¿Cómo se detectan actualmente los posibles incumplimientos?
+Pregunta 7. ¿Cómo se detectan actualmente los incumplimientos?
 
-Respuesta: Los analistas revisan los reportes y comparan manualmente los resultados reales con los compromisos proyectados. Este proceso puede provocar que algunos casos sean detectados después de un tiempo considerable.
+Respuesta: Los analistas comparan manualmente los resultados reales con los compromisos proyectados. Esto puede provocar que algunos casos sean detectados después de un tiempo considerable.
 
-Pregunta 8. ¿Qué función debería cumplir la inteligencia artificial?
+Pregunta 8. ¿Qué función debe cumplir la IA?
 
-Respuesta: La inteligencia artificial debería apoyar al analista realizando una pre-clasificación de las solicitudes, identificando posibles inconsistencias y generando alertas sobre situaciones que podrían requerir una revisión más detallada.
+Respuesta: La IA debe apoyar al analista realizando una preclasificación de solicitudes, identificando posibles inconsistencias y generando alertas sobre situaciones que requieran revisión.
 
-Pregunta 9. ¿La inteligencia artificial puede aprobar o rechazar una solicitud?
+Pregunta 9. ¿La IA puede aprobar o rechazar una solicitud?
 
-Respuesta: No. La inteligencia artificial solamente debe proporcionar una clasificación, recomendación o alerta. La decisión final siempre debe quedar en manos de un analista humano.
+Respuesta: No. La IA solamente debe proporcionar una clasificación, recomendación o alerta. La decisión final siempre debe quedar en manos de un analista humano.
 
-Pregunta 10. ¿Qué información debería visualizar el analista?
+Pregunta 10. ¿Qué información debe visualizar el analista?
 
-Respuesta: El analista debería poder consultar los datos de la empresa, información de la solicitud, resultados de la pre-clasificación de IA, alertas, reportes de cumplimiento y el historial de acciones realizadas.
+Respuesta: Debe poder consultar los datos de la empresa, la solicitud, el resultado de la IA, las alertas, los reportes de cumplimiento y el historial.
 
-Pregunta 11. ¿Qué características debería tener la nueva plataforma?
+Pregunta 11. ¿Qué características debe tener la plataforma?
 
-Respuesta: Debe ser organizada, fácil de utilizar, rápida, segura y permitir centralizar la información para reducir el trabajo manual y facilitar el seguimiento de los casos.
+Respuesta: Debe permitir centralizar la información, reducir el trabajo manual y facilitar el seguimiento. Estas necesidades se traducen en requisitos verificables de funcionamiento, rendimiento y usabilidad.
 
 Pregunta 12. ¿Qué funcionalidades podrían incorporarse en futuras versiones?
 
-Respuesta: Se podrían incorporar nuevas zonas francas, diferentes tipos de reportes, integraciones con sistemas externos, mayores capacidades de inteligencia artificial y herramientas avanzadas para análisis y auditoría.
-
-
-
-
+Respuesta: Nuevas zonas francas, diferentes tipos de reportes, integraciones con sistemas externos, mayores capacidades de IA y herramientas avanzadas para análisis y auditoría.
 
 3.3 Observación del proceso actual
-La observación del proceso permitió identificar cómo se gestionan actualmente las solicitudes y los reportes de cumplimiento.
+
+La observación permitió identificar cómo se gestionan actualmente las solicitudes y reportes de cumplimiento.
+
 3.3.1 Proceso manual de una solicitud
-El proceso actual puede describirse de la siguiente manera:
-1.	La empresa prepara la información y documentación necesaria. 
-2.	La empresa presenta la solicitud mediante los medios disponibles. 
-3.	La administración recibe los documentos. 
-4.	Un analista revisa manualmente la información. 
-5.	El analista identifica los datos importantes. 
-6.	La información es transcrita a una hoja de cálculo. 
-7.	Se comparan los datos proporcionados con los criterios establecidos. 
-8.	Si existen inconsistencias, el analista realiza una revisión adicional. 
-9.	Se registra el resultado del análisis. 
-10.	La respuesta se comunica a la empresa, principalmente mediante correo electrónico.
+La empresa prepara la información y documentación necesaria.
+La empresa presenta la solicitud mediante los medios disponibles.
+La administración recibe los documentos.
+Un analista revisa manualmente la información.
+El analista identifica los datos importantes.
+La información se transcribe a una hoja de cálculo.
+Se comparan los datos con los criterios establecidos.
+Si existen inconsistencias, el analista realiza una revisión adicional.
+Se registra el resultado.
+La respuesta se comunica a la empresa.
 Problemas identificados
-Durante la observación se identificaron los siguientes problemas:
-•	Alta dependencia de procesos manuales. 
-•	Posibilidad de errores de transcripción. 
-•	Información distribuida en diferentes archivos. 
-•	Tiempo prolongado para procesar las solicitudes. 
-•	Posibles diferencias de criterio entre analistas. 
-•	Falta de automatización. 
-•	Dificultad para consultar el historial. 
-•	Baja trazabilidad. 
-•	Dificultad para generar alertas de manera oportuna.
-
-
-
+Alta dependencia de procesos manuales.
+Posibilidad de errores de transcripción.
+Información distribuida.
+Tiempo prolongado de procesamiento.
+Posibles diferencias de criterio.
+Falta de automatización.
+Dificultad para consultar el historial.
+Baja trazabilidad.
+Dificultad para generar alertas oportunamente.
 3.3.2 Proceso manual de reporte de cumplimiento
-El proceso actual para el seguimiento del cumplimiento puede describirse así:
-1.	La empresa prepara su reporte periódico. 
-2.	Envía el reporte a la administración. 
-3.	El analista recibe la información. 
-4.	Los datos son revisados manualmente. 
-5.	La información se consolida en una hoja de cálculo. 
-6.	Se comparan los resultados reales con los compromisos proyectados. 
-7.	El analista identifica posibles diferencias. 
-8.	Se analiza si las diferencias representan un posible incumplimiento. 
-9.	Se registra el resultado. 
-10.	Se comunica la situación correspondiente. 
+La empresa prepara su reporte periódico.
+Envía el reporte a la administración.
+El analista recibe la información.
+Los datos son revisados manualmente.
+La información se consolida en una hoja de cálculo.
+Se comparan resultados reales con compromisos proyectados.
+El analista identifica diferencias.
+Se analiza si representan un posible incumplimiento.
+Se registra el resultado.
+Se comunica la situación correspondiente.
 Problemas identificados
-•	Comparación manual de datos. 
-•	Posibles errores humanos. 
-•	Falta de alertas automáticas. 
-•	Detección tardía de posibles incumplimientos. 
-•	Información distribuida. 
-•	Dificultad para realizar auditorías. 
-•	Falta de seguimiento centralizado.
-
-
-
-
-
-
-
-
-
+Comparación manual.
+Posibles errores humanos.
+Falta de alertas automáticas.
+Detección tardía.
+Información distribuida.
+Dificultad para auditorías.
+Falta de seguimiento centralizado.
 3.4 Reglas de negocio
-Las reglas de negocio establecen los criterios que deberá considerar el sistema para gestionar solicitudes y reportes de cumplimiento.
-Los valores numéricos incluidos como umbrales se consideran parámetros simulados para el prototipo académico y no deben interpretarse como requisitos oficiales del régimen de zonas francas.
-ID	Regla de negocio	Descripción
-RN-01	Datos obligatorios	Una solicitud debe contener todos los datos requeridos antes de poder ser enviada.
+
+Los valores numéricos utilizados en este proyecto son parámetros simulados para el prototipo académico y no representan requisitos oficiales del régimen de zonas francas.
+
+ID	Regla	Descripción
+RN-01	Datos obligatorios	Una solicitud debe contener todos los datos requeridos antes de poder enviarse.
 RN-02	Identificación empresarial	Toda empresa debe contar con una identificación jurídica registrada.
-RN-03	Información de inversión	La solicitud debe registrar la inversión proyectada de la empresa.
-RN-04	Información de empleo	La solicitud debe registrar la cantidad de empleos proyectados.
-RN-05	Sector empresarial	Toda solicitud debe indicar el sector al que pertenece la empresa.
-RN-06	Documentación	La empresa debe proporcionar la información legal y fiscal requerida.
-RN-07	Comparación de cumplimiento	Los reportes deben permitir comparar los resultados reales con los compromisos proyectados.
-RN-08	Generación de alertas	El sistema debe generar una alerta cuando detecte una diferencia significativa respecto a los compromisos.
-RN-09	Participación de IA	La IA puede realizar una pre-clasificación y generar recomendaciones, pero no puede tomar la decisión final.
-RN-10	Decisión humana	La decisión final sobre una solicitud debe ser realizada por un analista.
+RN-03	Inversión	La solicitud debe registrar la inversión proyectada.
+RN-04	Empleo	La solicitud debe registrar la cantidad de empleos proyectados.
+RN-05	Sector	Toda solicitud debe indicar el sector empresarial.
+RN-06	Documentación	La empresa debe proporcionar la documentación legal y fiscal requerida.
+RN-07	Comparación	Los reportes deben compararse con los compromisos originales.
+RN-08	Alertas	Se debe generar una alerta cuando el cumplimiento sea inferior al 80 % del compromiso establecido en empleos, inversión o exportaciones.
+RN-09	IA	La IA puede realizar preclasificaciones y recomendaciones, pero no tomar la decisión final.
+RN-10	Decisión humana	La decisión final debe ser realizada por un analista.
 RN-11	Trazabilidad	El sistema debe registrar las acciones relevantes realizadas sobre cada solicitud.
 RN-12	Estados	Cada solicitud debe mantener un estado que permita conocer su etapa de procesamiento.
-Parámetros simulados del prototipo
-Para efectos de la primera versión del sistema se utilizarán los siguientes valores de prueba:
+RN-13	Clasificación IA	La clasificación inicial se determinará mediante rangos de puntaje definidos para el prototipo.
+Parámetros simulados
 Criterio	Valor simulado
 Inversión mínima	₡30.000.000
 Empleos mínimos	50
-Umbral de alerta de empleo	Menos del 80 % del compromiso
-Umbral de alerta de inversión	Menos del 80 % del compromiso
-Umbral de alerta de exportaciones	Menos del 80 % del compromiso
-Estos valores podrán ser modificados posteriormente de acuerdo con los requisitos reales que se definan para una implementación productiva.
-________________________________________
+Umbral de empleo	Menos del 80 %
+Umbral de inversión	Menos del 80 %
+Umbral de exportaciones	Menos del 80 %
+Rangos simulados de clasificación IA
+Puntaje	Clasificación
+80–100	Recomendada
+50–79	Revisar
+0–49	Rechazada
+
+Estos rangos son exclusivamente para el prototipo académico.
+
+Importante: la clasificación generada por IA será únicamente una recomendación inicial y no representará una decisión definitiva.
+
 3.5 Glosario del dominio
-A continuación se presentan los principales términos relacionados con el dominio del proyecto.
 Término	Definición
-Zona Franca	Área delimitada donde operan empresas bajo un régimen especial establecido por la legislación correspondiente.
+Zona Franca	Área donde operan empresas bajo un régimen especial establecido por la legislación correspondiente.
 Régimen de Zona Franca	Conjunto de condiciones, beneficios y obligaciones aplicables a las empresas que operan bajo este régimen.
-PROCOMER	Promotora del Comercio Exterior de Costa Rica, institución relacionada con la promoción y gestión de aspectos vinculados al comercio exterior y zonas francas.
+PROCOMER	Promotora del Comercio Exterior de Costa Rica.
 Empresa beneficiaria	Empresa que solicita o posee autorización para operar bajo el régimen correspondiente.
-Compromiso de inversión	Inversión que una empresa proyecta realizar como parte de los compromisos establecidos.
+Compromiso de inversión	Inversión que una empresa proyecta realizar como parte de sus compromisos.
 Empleo proyectado	Cantidad de puestos de trabajo que una empresa espera generar.
-Cumplimiento	Verificación de que una empresa está alcanzando los compromisos establecidos.
+Cumplimiento	Verificación de que una empresa está alcanzando sus compromisos.
 Reporte de cumplimiento	Información periódica presentada por una empresa para demostrar sus resultados reales.
-Preclasificación	Evaluación inicial realizada por el sistema o componente de IA para categorizar una solicitud y facilitar su revisión.
-Alerta	Aviso generado por el sistema cuando se detecta una situación que requiere atención o revisión.
-________________________________________
+Preclasificación	Evaluación inicial realizada por el sistema o IA para categorizar una solicitud.
+Alerta	Aviso generado cuando se detecta una situación que requiere atención.
 3.6 Resultado del levantamiento
-A partir de las técnicas utilizadas se concluye que el principal problema del proceso actual es la dependencia de actividades manuales, hojas de cálculo y comunicaciones por correo electrónico. Esto genera riesgos de errores, retrasos, falta de uniformidad en los criterios y poca trazabilidad.
-Como respuesta a estas necesidades, ZoFranca CR propone centralizar la gestión de solicitudes y reportes en una plataforma web. El sistema permitirá registrar y consultar información, procesar datos de forma asíncrona, comparar compromisos con resultados reales y utilizar un componente de inteligencia artificial para realizar pre-clasificaciones y generar alertas.
-La inteligencia artificial tendrá un papel de apoyo al analista, pero no sustituirá la decisión humana. De esta forma, el sistema automatizará tareas repetitivas y ayudará a identificar casos que requieren atención, manteniendo la responsabilidad de la decisión final en el personal encargado.
 
+El principal problema identificado es la dependencia de actividades manuales, hojas de cálculo y comunicaciones por correo electrónico.
 
+Esto genera riesgos de errores, retrasos, falta de uniformidad y poca trazabilidad.
 
+Como respuesta, ZoFranca CR propone centralizar la gestión de solicitudes y reportes en una plataforma web que permita registrar información, procesar operaciones de forma asíncrona, comparar compromisos con resultados reales y utilizar IA para preclasificación y generación de alertas.
 
-# 3.2 Requerimientos funcionales (RF)
+La IA será una herramienta de apoyo y no sustituirá la decisión humana.
 
-Los requerimientos funcionales describen las principales funciones que debe realizar la plataforma ZoFranca CR. Estos requerimientos se organizan en cuatro bloques: gestión de solicitudes de instalación, cumplimiento y reportería, inteligencia artificial y procesamiento, y colaboración, trazabilidad y crecimiento.
+4. Requerimientos del sistema
+4.1 Requerimientos funcionales
 
-Los requerimientos de prioridad **Alta** son considerados esenciales para la primera versión funcional del proyecto. Los requerimientos de prioridad **Media** podrán implementarse dependiendo del alcance y tiempo disponible. Los requerimientos de prioridad **Baja** serán documentados como parte de la proyección futura, pero no son obligatorios para esta entrega.
+Los requerimientos funcionales describen las funciones que debe realizar la plataforma.
 
-## 3.2.1 Gestión de solicitudes de instalación
+4.1.1 Gestión de solicitudes de instalación
+ID	Requerimiento	Prioridad
+RF-01	El sistema permite al administrador registrar una zona franca con nombre, inversión mínima, empleos mínimos y sectores permitidos.	Alta
+RF-02	El sistema permite a una empresa registrar y enviar una solicitud con nombre, identificación jurídica, sector, inversión proyectada, empleos proyectados, exportaciones proyectadas y documentos de respaldo.	Alta
+RF-03	El sistema guarda y consulta solicitudes de forma asíncrona mediante json-server.	Alta
+RF-04	El sistema envía los datos de la solicitud al componente de IA y recibe un puntaje de 0 a 100.	Alta
+RF-05	El sistema genera una clasificación inicial según el puntaje obtenido.	Alta
+Criterios de aceptación
 
-| ID    | Requerimiento funcional                                                                                                                                                                        | Prioridad |
-| ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| RF-01 | El sistema permite registrar una zona franca con sus criterios mínimos de admisión, incluyendo inversión mínima, empleos mínimos proyectados y sectores permitidos.                            | Alta      |
-| RF-02 | El sistema permite a una empresa completar y enviar una solicitud de instalación con sus datos, incluyendo nombre, sector, inversión proyectada, empleos proyectados y documentos de respaldo. | Alta      |
-| RF-03 | El sistema guarda y consulta cada solicitud de forma asíncrona en el backend mediante `json-server`, sin bloquear la interfaz.                                                                 | Alta      |
-| RF-04 | El sistema envía el perfil de la solicitud a un componente de IA que devuelve un puntaje de afinidad con los criterios de la zona franca entre 0 y 100.                                        | Alta      |
-| RF-05 | El sistema clasifica automáticamente cada solicitud como "Recomendada", "Revisar" o "Rechazada" según el puntaje obtenido.                                                                     | Alta      |
+RF-01: El administrador puede registrar una zona franca indicando nombre, inversión mínima, empleos mínimos y sectores permitidos.
 
-### Criterios de aceptación
+RF-02: El sistema valida los campos obligatorios antes de permitir el envío de una solicitud.
 
-**RF-01:** El administrador debe poder registrar una zona franca indicando sus criterios mínimos de admisión.
+RF-03: La solicitud se guarda mediante una operación asíncrona y permanece disponible después de recargar la página.
 
-**RF-02:** El sistema debe validar los campos obligatorios antes de permitir el envío de una solicitud.
+RF-04: El componente de IA devuelve un puntaje numérico entre 0 y 100.
 
-**RF-03:** La información debe enviarse mediante operaciones asíncronas y permanecer disponible en `json-server` después de recargar la página.
+RF-05: El sistema clasifica la solicitud utilizando los siguientes rangos:
 
-**RF-04:** El componente de IA debe devolver un puntaje entre 0 y 100.
+80–100: Recomendada.
+50–79: Revisar.
+0–49: Rechazada.
+4.1.2 Cumplimiento y reportería
+ID	Requerimiento	Prioridad
+RF-06	El sistema permite a una empresa instalada enviar un reporte con empleos reales, inversión ejecutada y exportaciones.	Alta
+RF-07	El sistema compara los resultados reales con los compromisos originales.	Media
+RF-08	El sistema genera alertas cuando un indicador es inferior al 80 % del compromiso establecido.	Alta
+RF-09	El sistema permite visualizar un resumen consolidado de cumplimiento.	Media
+Criterios de aceptación
 
-**RF-05:** El sistema debe utilizar el resultado obtenido para generar una clasificación inicial de la solicitud.
+RF-06: El formulario permite registrar empleos reales, inversión ejecutada y exportaciones.
 
----
+RF-07: El sistema muestra para cada indicador el valor comprometido y el valor reportado.
 
-## 3.2.2 Cumplimiento y reportería
+RF-08: Si un indicador es inferior al 80 % del compromiso correspondiente, el sistema genera una alerta visible para el analista.
 
-| ID    | Requerimiento funcional                                                                                                                                                   | Prioridad |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| RF-06 | El sistema permite a una empresa ya instalada enviar un reporte periódico de cumplimiento con empleos reales, inversión ejecutada y exportaciones.                        | Alta      |
-| RF-07 | El sistema compara automáticamente el cumplimiento reportado contra los compromisos originales de la solicitud aprobada.                                                  | Media     |
-| RF-08 | El sistema genera una alerta cuando una empresa incumple algún umbral de su compromiso, por ejemplo, cuando los empleos reales se encuentran por debajo de lo proyectado. | Alta      |
-| RF-09 | El sistema permite visualizar un resumen consolidado de cumplimiento, simulando el reporte que posteriormente podría enviarse a PROCOMER.                                 | Media     |
+RF-09: El sistema presenta un resumen con los principales indicadores de cumplimiento.
 
-### Criterios de aceptación
+4.1.3 Inteligencia artificial y procesamiento
+ID	Requerimiento	Prioridad
+RF-10	El sistema muestra un indicador de carga durante las operaciones asíncronas.	Media
+RF-11	El sistema maneja errores de red o datos inválidos y muestra mensajes claros al usuario.	Alta
+RF-12	El analista puede confirmar, modificar o rechazar la clasificación sugerida por la IA.	Alta
+RF-13	El sistema utiliza Promise.all() cuando existan varias operaciones independientes que puedan procesarse en paralelo.	Alta
+Criterios de aceptación
 
-**RF-06:** Una empresa instalada debe poder completar y enviar un formulario con sus resultados reales.
+RF-10: Durante una operación asíncrona se muestra un indicador como "Cargando..." o "Procesando...".
 
-**RF-07:** El sistema debe mostrar los valores proyectados y los valores reales para facilitar la comparación.
+RF-11: Cuando ocurre un error, el usuario recibe un mensaje comprensible y la interfaz continúa funcionando.
 
-**RF-08:** Cuando se detecte una diferencia que supere el umbral definido, el sistema debe generar una alerta visible para el analista.
+RF-12: El analista puede aceptar, modificar o rechazar la recomendación generada por la IA.
 
-**RF-09:** El sistema debe presentar un resumen de los principales indicadores de cumplimiento.
+RF-13: Cuando existan operaciones independientes, estas se ejecutan mediante Promise.all().
 
----
+4.1.4 Colaboración, trazabilidad y crecimiento
+ID	Requerimiento	Prioridad
+RF-14	El sistema permite consultar el historial de una empresa, incluyendo solicitudes, reportes, decisiones y fechas.	Media
+RF-15	El sistema permite filtrar solicitudes por estado, zona franca, sector y fecha.	Media
+RF-16	json-server registra información suficiente para reconstruir el estado de las solicitudes.	Alta
+RF-17	La estructura del sistema contempla la incorporación de múltiples zonas francas en futuras versiones.	Baja
+RF-18	El sistema contempla un panel con métricas básicas del proceso para futuras versiones.	Baja
+Criterios de aceptación
 
-## 3.2.3 Inteligencia artificial y procesamiento
+RF-14: El historial muestra las acciones realizadas, el responsable de la acción y la fecha correspondiente.
 
-| ID    | Requerimiento funcional                                                                                                                                           | Prioridad |
-| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| RF-10 | El sistema muestra un indicador de carga mientras se resuelven las operaciones asíncronas, como el envío de solicitudes, consulta a IA o guardado de información. | Media     |
-| RF-11 | El sistema maneja errores de red o datos inválidos y notifica al usuario mediante mensajes claros y no técnicos.                                                  | Alta      |
-| RF-12 | El analista humano puede confirmar, rechazar o cambiar la clasificación sugerida por la IA. La IA nunca toma la decisión final.                                   | Alta      |
-| RF-13 | El sistema evalúa varias solicitudes o reportes en paralelo utilizando `Promise.all()` cuando corresponda, sin procesarlos obligatoriamente uno por uno.          | Alta      |
+RF-15: El usuario puede aplicar filtros por estado, zona franca, sector y fecha.
 
-### Criterios de aceptación
+RF-16: Los datos permanecen almacenados en db.json y no dependen exclusivamente de variables del navegador.
 
-**RF-10:** Durante una operación asíncrona debe mostrarse un mensaje o indicador como "Procesando..." o "Cargando...".
+RF-17: La documentación explica cómo podrían incorporarse múltiples zonas francas. No es obligatorio implementarlo en esta entrega.
 
-**RF-11:** Cuando se produzca un error, el usuario debe recibir un mensaje comprensible y la interfaz debe continuar funcionando.
+RF-18: La documentación define las métricas que tendría el dashboard. No es obligatorio implementarlo en esta entrega.
 
-**RF-12:** El analista debe poder aceptar, modificar o rechazar la recomendación generada por la IA.
+4.2 Requerimientos no funcionales
+ID	Requerimiento
+RNF-01	La interfaz no debe congelarse durante las operaciones asíncronas.
+RNF-02	Las operaciones normales deberán mostrar un resultado o error en un máximo de 5 segundos en condiciones normales del entorno local de prueba.
+RNF-03	El sistema debe utilizar Promise.all() cuando existan operaciones independientes que puedan ejecutarse en paralelo.
+RNF-04	El sistema debe funcionar desde un navegador web sin instalación adicional para el usuario final.
+RNF-05	Los errores deben registrarse en consola y comunicarse mediante mensajes claros y no técnicos.
+RNF-06	json-server debe poder reiniciarse manteniendo la estructura definida en db.json.
+RNF-07	La interfaz debe seguir los mockups aprobados previamente en Stitch.
+RNF-08	El historial de commits de GitHub debe reflejar la participación real de ambos integrantes.
+RNF-09	La arquitectura debe permitir incorporar nuevas zonas francas y tipos de reportes sin reconstruir completamente la aplicación.
+4.3 Priorización
+Prioridad alta
+RF-01 — Registro de zonas francas.
+RF-02 — Registro y envío de solicitudes.
+RF-03 — Procesamiento asíncrono.
+RF-04 — Preclasificación mediante IA.
+RF-05 — Clasificación inicial.
+RF-06 — Reportes de cumplimiento.
+RF-08 — Alertas de incumplimiento.
+RF-11 — Manejo de errores.
+RF-12 — Decisión del analista.
+RF-13 — Procesamiento paralelo.
+RF-16 — Persistencia de datos.
+Prioridad media
+RF-07 — Comparación de cumplimiento.
+RF-09 — Resumen consolidado.
+RF-10 — Indicadores de carga.
+RF-14 — Historial.
+RF-15 — Filtros.
+Prioridad baja
+RF-17 — Administración de múltiples zonas francas.
+RF-18 — Panel de métricas.
 
-**RF-13:** Cuando existan varias operaciones independientes, el sistema debe poder ejecutarlas en paralelo mediante `Promise.all()`.
+Los requerimientos de prioridad baja serán documentados como parte del crecimiento futuro y no serán obligatorios para la primera versión.
 
----
+4.4 Historias de usuario
+US-01 — Registrar zona franca
 
-## 3.2.4 Colaboración, trazabilidad y crecimiento
+Como administrador,
+quiero registrar una zona franca con sus criterios mínimos,
+para establecer los parámetros que utilizará el sistema al evaluar las solicitudes.
 
-| ID    | Requerimiento funcional                                                                                                                                     | Prioridad |
-| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| RF-14 | El sistema permite consultar el historial de una empresa, incluyendo solicitudes y reportes, con trazabilidad de quién tomó cada decisión y cuándo.         | Media     |
-| RF-15 | El sistema permite listar y filtrar solicitudes por estado, zona franca, sector y fecha.                                                                    | Media     |
-| RF-16 | El backend mediante `json-server` registra los datos suficientes para reconstruir el estado de cada solicitud sin depender de la memoria del navegador.     | Alta      |
-| RF-17 | El sistema está diseñado para administrar más de una zona franca dentro de la misma plataforma, aunque el equipo solo implemente una en esta entrega.       | Baja      |
-| RF-18 | El sistema permite visualizar un panel con métricas básicas del proceso, como total de solicitudes, porcentaje de aprobadas y tiempo promedio de respuesta. | Baja      |
+RF relacionado: RF-01.
 
-### Criterios de aceptación
+US-02 — Registrar solicitud
 
-**RF-14:** El sistema debe mostrar las acciones realizadas sobre una empresa y su fecha correspondiente.
+Como empresa interesada en instalarse en una zona franca,
+quiero registrar y enviar una solicitud con la información requerida,
+para que pueda ser evaluada por la administración.
 
-**RF-15:** El usuario debe poder aplicar filtros para localizar solicitudes específicas.
+RF relacionados: RF-02, RF-03.
 
-**RF-16:** Los datos deben almacenarse en `db.json` y no depender exclusivamente de variables almacenadas en el navegador.
+US-03 — Preclasificación mediante IA
 
-**RF-17:** La estructura del sistema debe contemplar la posibilidad de registrar varias zonas francas.
+Como analista,
+quiero recibir una preclasificación generada por IA,
+para identificar rápidamente las solicitudes que requieren revisión.
 
-**RF-18:** El dashboard debe contemplar las métricas principales del proceso, aunque esta función pueda quedar documentada para una versión posterior.
+RF relacionados: RF-04, RF-05.
 
----
+US-04 — Decisión humana
 
-# 3.3 Requerimientos no funcionales (RNF)
+Como analista,
+quiero confirmar, modificar o rechazar la recomendación de la IA,
+para mantener la decisión final bajo responsabilidad humana.
 
-Los requerimientos no funcionales establecen las condiciones técnicas y de calidad que debe cumplir ZoFranca CR, independientemente de las funcionalidades específicas.
+RF relacionado: RF-12.
 
-| ID     | Requerimiento no funcional                                                                                                                           |
-| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| RNF-01 | La interfaz no debe congelarse durante ninguna llamada asíncrona. Se utilizarán Promesas, `async/await` y manejo adecuado de operaciones asíncronas. |
-| RNF-02 | El tiempo de respuesta percibido no debe superar unos pocos segundos por solicitud o reporte evaluado en condiciones normales del entorno de prueba. |
-| RNF-03 | El sistema debe manejar múltiples solicitudes o reportes en paralelo utilizando `Promise.all()` cuando la operación lo permita.                      |
-| RNF-04 | El sistema debe ser usable desde un navegador web sin requerir una instalación adicional por parte del usuario final.                                |
-| RNF-05 | Los errores deben registrarse en la consola para facilitar la depuración y comunicarse al usuario mediante mensajes claros y no técnicos.            |
-| RNF-06 | El backend simulado mediante `json-server` debe poder reiniciarse manteniendo la estructura de datos definida en `db.json`.                          |
-| RNF-07 | La interfaz debe seguir los mockups aprobados previamente en Stitch antes de iniciar la programación de la interfaz.                                 |
-| RNF-08 | El historial de commits de GitHub debe reflejar la participación real de ambos integrantes de la pareja.                                             |
-| RNF-09 | La arquitectura debe permitir agregar nuevas zonas francas y nuevos tipos de reportes sin tener que reconstruir completamente la aplicación.         |
+US-05 — Reporte de cumplimiento
 
----
+Como empresa instalada,
+quiero enviar un reporte periódico con mis resultados reales,
+para demostrar el cumplimiento de mis compromisos.
 
-# 3.3.1 Priorización de los requerimientos
+RF relacionados: RF-06, RF-07.
 
-Para la primera versión del sistema se priorizarán las funcionalidades esenciales para demostrar el funcionamiento de la solución.
+US-06 — Alertas
 
-### Prioridad alta
+Como analista,
+quiero recibir alertas cuando una empresa esté por debajo de los umbrales establecidos,
+para detectar posibles incumplimientos.
 
-Los requerimientos de prioridad alta que se consideran fundamentales son:
+RF relacionado: RF-08.
 
-* RF-01: Registro de zonas francas.
-* RF-02: Registro y envío de solicitudes.
-* RF-03: Procesamiento asíncrono.
-* RF-04: Preclasificación mediante IA.
-* RF-05: Clasificación inicial.
-* RF-06: Reportes de cumplimiento.
-* RF-08: Alertas de incumplimiento.
-* RF-11: Manejo de errores.
-* RF-12: Decisión del analista.
-* RF-13: Procesamiento paralelo.
-* RF-16: Persistencia de datos.
+US-07 — Historial
 
-### Prioridad media
+Como analista,
+quiero consultar el historial de una empresa,
+para conocer sus solicitudes, reportes y decisiones anteriores.
 
-Se consideran importantes para complementar la plataforma:
+RF relacionado: RF-14.
 
-* RF-07: Comparación de cumplimiento.
-* RF-09: Resumen consolidado.
-* RF-10: Indicadores de carga.
-* RF-14: Historial.
-* RF-15: Filtros.
+US-08 — Filtrar solicitudes
 
-### Prioridad baja
+Como analista,
+quiero filtrar solicitudes por estado, zona franca, sector y fecha,
+para localizar rápidamente los casos que necesito revisar.
 
-Estas funciones se documentan como parte del crecimiento futuro:
+RF relacionado: RF-15.
 
-* RF-17: Administración de múltiples zonas francas.
-* RF-18: Panel de métricas avanzadas.
+US-09 — Resumen de cumplimiento
 
----
+Como analista,
+quiero visualizar un resumen de cumplimiento,
+para conocer rápidamente el estado de las empresas.
 
-# 3.3.2 Consideración sobre el componente de inteligencia artificial
+RF relacionado: RF-09.
+
+4.5 Criterios de aceptación generales
+ID	Criterio
+CA-01	El sistema valida los campos obligatorios de una solicitud.
+CA-02	Una solicitud válida puede almacenarse en json-server.
+CA-03	Los datos permanecen disponibles después de recargar la página.
+CA-04	La IA devuelve un puntaje entre 0 y 100.
+CA-05	El sistema genera una clasificación según los rangos definidos.
+CA-06	Una empresa puede enviar un reporte de cumplimiento.
+CA-07	El sistema muestra los valores reales y proyectados para cada indicador.
+CA-08	El sistema genera una alerta cuando el cumplimiento es inferior al 80 %.
+CA-09	El sistema muestra un resumen de cumplimiento.
+CA-10	El sistema muestra un indicador durante operaciones asíncronas.
+CA-11	El sistema muestra mensajes claros ante errores.
+CA-12	El analista puede modificar la recomendación de la IA.
+CA-13	La IA no puede registrar una decisión definitiva.
+CA-14	El sistema registra las acciones realizadas, responsable y fecha.
+CA-15	El sistema permite filtrar solicitudes.
+CA-16	El administrador puede registrar los criterios de una zona franca.
+4.6 Matriz de trazabilidad
+Historia de usuario	RF	Criterios de aceptación
+US-01	RF-01	CA-16
+US-02	RF-02, RF-03	CA-01, CA-02, CA-03
+US-03	RF-04, RF-05	CA-04, CA-05
+US-04	RF-12	CA-12, CA-13
+US-05	RF-06, RF-07	CA-06, CA-07
+US-06	RF-08	CA-08
+US-07	RF-14	CA-14
+US-08	RF-15	CA-15
+US-09	RF-09	CA-09
+
+Esta matriz permite relacionar cada necesidad del usuario con un requerimiento funcional y con los criterios utilizados para verificar su cumplimiento.
+
+5. Inteligencia artificial
 
 La inteligencia artificial será utilizada como una herramienta de apoyo para la evaluación inicial de las solicitudes y la detección de posibles situaciones de riesgo.
 
-El sistema podrá utilizar la información proporcionada por la empresa para generar un puntaje de afinidad entre 0 y 100 y una clasificación inicial.
+El componente de IA utilizará los datos de la solicitud y los criterios definidos para la zona franca para generar un puntaje de afinidad entre 0 y 100.
 
-Sin embargo, la IA **no tendrá autoridad para aprobar o rechazar definitivamente una solicitud**.
+La clasificación inicial se realizará de acuerdo con los siguientes rangos:
+
+Puntaje	Resultado
+80–100	Recomendada
+50–79	Revisar
+0–49	Rechazada
+
+La clasificación será únicamente una recomendación inicial.
+
+La IA no tendrá autoridad para aprobar o rechazar definitivamente una solicitud.
 
 El flujo será:
 
-Empresa → Solicitud → Procesamiento → IA → Clasificación/Alerta → Analista → Decisión final.
+Empresa → Solicitud → Procesamiento → IA → Clasificación/Alerta → Analista → Decisión final
 
-De esta manera, la plataforma automatiza tareas repetitivas y facilita el análisis, pero mantiene la supervisión y responsabilidad de la decisión final en una persona.
+El analista podrá:
 
----
+Confirmar la recomendación.
+Modificar la recomendación.
+Rechazar la recomendación.
 
-# 3.3.3 Consideración sobre escalabilidad
+La decisión definitiva deberá quedar registrada con el responsable y la fecha.
 
-Aunque la primera versión del proyecto implementará únicamente una zona franca y un conjunto limitado de reportes, la estructura de la aplicación será diseñada para permitir futuras ampliaciones.
+6. Proceso manual vs. proceso automatizado
+Proceso actual	ZoFranca CR
+Solicitudes mediante correo y documentos	Formulario web
+Transcripción manual	Registro digital
+Hojas de cálculo dispersas	json-server
+Comparación manual	Comparación automática
+Revisión manual de cada caso	Preclasificación mediante IA
+Detección tardía	Alertas automáticas
+Respuestas mediante correo	Estado dentro de la plataforma
+Historial disperso	Historial centralizado
+Decisión manual sin apoyo	IA como apoyo + decisión humana
+Difícil auditoría	Registro de acciones
+
+La automatización busca reducir tareas repetitivas, disminuir errores de transcripción y facilitar la detección de situaciones que requieran atención.
+
+7. Diseño de interfaz
+
+Antes de comenzar la programación de la interfaz se realizarán los mockups correspondientes en Stitch.
+
+Los mockups deberán contemplar como mínimo:
+
+Pantalla principal.
+Registro de zona franca.
+Registro de solicitud.
+Lista de solicitudes.
+Detalle de solicitud.
+Resultado de IA.
+Panel de decisión del analista.
+Registro de reporte de cumplimiento.
+Alertas.
+Historial.
+
+La interfaz implementada deberá respetar los mockups aprobados.
+
+8. Arquitectura y procesamiento
+
+La primera versión utilizará una arquitectura compuesta por:
+
+Frontend
+HTML.
+CSS.
+JavaScript.
+Backend simulado
+Node.js.
+json-server.
+db.json.
+Procesamiento
+Promesas.
+async/await.
+try/catch.
+Promise.all().
+Inteligencia artificial
+Componente real mediante API o simulación controlada para fines académicos.
+
+Las operaciones de comunicación con el backend y el componente de IA deberán ejecutarse de forma asíncrona para evitar bloquear la interfaz.
+
+9. Colaboración
+
+El desarrollo se realizará en pareja mediante GitHub.
+
+Cada integrante deberá trabajar utilizando ramas asociadas a funcionalidades o tareas específicas.
+
+Ejemplos:
+
+main
+│
+├── feature/solicitudes
+├── feature/ia
+├── feature/cumplimiento
+└── feature/interfaz
+
+Las funcionalidades terminadas deberán integrarse mediante Pull Requests.
+
+El historial de commits deberá demostrar la participación real de ambos integrantes.
+
+9.1 Trello
+
+El tablero de Trello se utilizará para controlar el estado de las tareas del proyecto.
+
+Las listas serán:
+
+Por definir → En redacción → En validación de IA → Rechazado/Corregir → Aprobado
+
+Cada tarjeta deberá contener:
+
+Nombre de la tarea.
+Descripción.
+Responsable.
+Fecha límite cuando corresponda.
+Checklist de actividades.
+Evidencia o enlace relacionado, cuando sea necesario.
+10. Proyección futura
+
+Aunque la primera versión implementará únicamente una zona franca y un conjunto limitado de reportes, la estructura de ZoFranca CR estará orientada al crecimiento.
 
 Entre las posibles ampliaciones se consideran:
 
-* Incorporación de nuevas zonas francas.
-* Nuevos tipos de reportes.
-* Integración con sistemas externos.
-* Nuevas métricas.
-* Mayor automatización de alertas.
-* Modelos de inteligencia artificial más avanzados.
-* Herramientas de auditoría y trazabilidad.
+Incorporación de múltiples zonas francas.
+Nuevos tipos de reportes.
+Integraciones con sistemas externos.
+Nuevas métricas.
+Mayor automatización de alertas.
+Modelos de IA más avanzados.
+Herramientas de auditoría.
+Reportes avanzados.
+Integración con servicios institucionales.
 
-Esto permitirá que ZoFranca CR pueda evolucionar desde un prototipo académico hacia una solución de mayor alcance.
+La arquitectura propuesta permitirá que el prototipo pueda evolucionar posteriormente hacia una plataforma de mayor alcance.
+
+11. Conclusión
+
+El levantamiento de requerimientos permitió identificar los principales problemas del proceso manual de gestión de solicitudes y cumplimiento de empresas de zonas francas.
+
+ZoFranca CR propone una solución web que centraliza la información, automatiza tareas repetitivas, utiliza procesamiento asíncrono y emplea inteligencia artificial como herramienta de apoyo.
+
+La IA realizará una preclasificación y generará alertas, pero no sustituirá al analista humano. La decisión final permanecerá bajo responsabilidad del analista.
+
+Los requerimientos funcionales, requerimientos no funcionales, reglas de negocio, historias de usuario y criterios de aceptación establecen una base verificable para el desarrollo de la primera versión del sistema.
+
+La matriz de trazabilidad permite relacionar las necesidades de los usuarios con los requerimientos funcionales y sus criterios de aceptación.
+
+Además, la propuesta de escalabilidad establece una base para incorporar nuevas zonas francas, reportes e integraciones en futuras versiones.
