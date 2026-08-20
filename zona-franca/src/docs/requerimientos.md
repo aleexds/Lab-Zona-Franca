@@ -864,4 +864,131 @@ Mantener la decisión final bajo responsabilidad humana.
 
 De esta manera, ZoFranca CR permitirá transformar un proceso principalmente manual en un flujo digital, centralizado, verificable y con mayor trazabilidad, manteniendo el alcance definido para el prototipo académico.
 
- 
+ 5.3 Rol de la asincronía
+
+La asincronía es fundamental en ZoFranca CR porque permite realizar operaciones de comunicación con el backend y con el componente de inteligencia artificial sin bloquear la interfaz del usuario.
+
+El sistema utilizará los siguientes mecanismos:
+
+Concepto asíncrono	Uso en el sistema
+Promesas (Promise)	Encapsular las llamadas al backend mediante json-server y las operaciones realizadas con el componente de IA.
+async / await	Permitir escribir de forma clara y secuencial el flujo de evaluación de solicitudes y reportes de cumplimiento.
+Promise.all()	Procesar varias solicitudes o reportes independientes en paralelo cuando sea posible, evitando esperar innecesariamente una operación antes de iniciar otra.
+try / catch	Capturar y manejar errores relacionados con fallos de red, respuestas inválidas del backend o problemas durante la evaluación mediante IA.
+Estados de la interfaz	Mostrar al usuario estados como "Cargando", "Procesando", "Completado" y "Error" durante las operaciones asíncronas. Estos estados deberán estar contemplados en los mockups de Stitch.
+Flujo asíncrono general
+
+El procesamiento de una solicitud seguirá, de manera general, el siguiente flujo:
+
+Formulario → fetch() → json-server → Procesamiento IA → Resultado → Actualización de interfaz
+
+Durante este proceso, la interfaz deberá permanecer disponible para el usuario y mostrar el estado actual de la operación.
+
+Por ejemplo:
+
+El usuario envía una solicitud.
+El sistema muestra el estado "Procesando...".
+La información se guarda en json-server.
+El sistema solicita la evaluación del componente de IA.
+Se recibe el resultado.
+El sistema actualiza la solicitud con el puntaje y la clasificación.
+Se muestra el resultado al usuario.
+Si ocurre un error, se muestra un mensaje comprensible y se mantiene disponible la interfaz.
+
+La utilización de operaciones asíncronas permitirá que el sistema gestione las comunicaciones con el backend y la IA sin bloquear la interfaz.
+
+5.4 Rol de la inteligencia artificial
+
+La inteligencia artificial será utilizada como herramienta de apoyo para la evaluación inicial de las solicitudes y reportes de cumplimiento.
+
+La IA no sustituirá al analista humano ni tendrá autoridad para aprobar o rechazar definitivamente una solicitud. Su función será generar un puntaje, una clasificación inicial y, cuando corresponda, una justificación o alerta que ayude al analista a tomar una decisión.
+
+El flujo será:
+
+Solicitud → Evaluación IA → Puntaje y justificación → Clasificación inicial → Analista → Decisión final
+
+Para la primera versión del prototipo académico se podrá utilizar uno de los siguientes enfoques:
+
+Opción A — IA real
+
+Se podrá utilizar una API de un modelo de lenguaje que reciba la información de la solicitud o del reporte y devuelva una respuesta estructurada que incluya:
+
+Puntaje de afinidad entre 0 y 100.
+Clasificación inicial.
+Justificación de la clasificación.
+Posibles inconsistencias detectadas.
+Alertas que requieran revisión.
+
+La respuesta obtenida deberá ser procesada por el sistema antes de mostrarla al analista.
+
+Opción B — IA simulada
+
+También se podrá implementar una función que simule el comportamiento de un componente de IA.
+
+Esta función deberá:
+
+Obtener los datos de la solicitud desde json-server.
+Analizar variables como sector, inversión y empleos proyectados.
+Comparar los datos con los criterios definidos para la zona franca.
+Calcular un puntaje entre 0 y 100.
+Generar una clasificación inicial.
+Devolver el resultado dentro de una Promesa (Promise) para simular el tiempo de procesamiento.
+Generar una alerta cuando los datos indiquen una posible situación que requiera revisión.
+
+La información utilizada para la evaluación deberá obtenerse desde json-server y no desde un arreglo fijo dentro del código JavaScript.
+
+Clasificación simulada
+
+Para el prototipo se utilizarán los siguientes rangos:
+
+Puntaje	Clasificación
+80–100	Recomendada
+50–79	Revisar
+0–49	Rechazada
+
+Estos rangos son parámetros simulados exclusivamente para el prototipo académico.
+
+Participación del analista
+
+El resultado generado por la IA será una recomendación inicial. El analista podrá:
+
+Confirmar la recomendación.
+Modificar la clasificación.
+Rechazar la recomendación.
+Registrar la decisión final y su justificación.
+
+Por lo tanto, la IA no podrá registrar por sí sola una aprobación o rechazo definitivo.
+
+Esta separación permite aprovechar la automatización sin eliminar la supervisión humana del proceso.
+
+Ejemplo del flujo completo
+
+Empresa
+↓
+Formulario de solicitud
+↓
+json-server
+↓
+Evaluación asíncrona mediante IA
+↓
+Puntaje + clasificación + justificación
+↓
+Analista revisa
+↓
+Decisión final
+↓
+Registro de la decisión y trazabilidad
+
+⚠️ Corrección clave respecto al texto original
+
+No pongas:
+
+"La IA sustituye la decisión manual..."
+
+Porque contradice tu propio RF-12, donde estableces que el analista puede confirmar, modificar o rechazar la recomendación de IA.
+
+La frase correcta es:
+
+"La IA apoya la decisión del analista mediante una preclasificación, un puntaje, una justificación y alertas, pero no sustituye la decisión humana."
+
+Con estas dos secciones, 5.3 y 5.4 quedan alineadas con tus requerimientos funcionales, reglas de negocio y criterios de aceptación anteriores.
