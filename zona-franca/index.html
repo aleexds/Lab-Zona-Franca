@@ -7,8 +7,27 @@
     <title>zona-franca</title>
   </head>
   <body>
-    
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
-</html>
+    <form id="formularioSolicitud">
+  <label for="empresa">Nombre de la Empresa:</label>
+  <input type="text" id="empresa" required>
+
+  <label for="sector">Sector:</label>
+  <select id="sector">
+    <option value="tecnologia">Tecnología</option>
+    <option value="manufactura">Manufactura</option>
+    <option value="bpo">Servicios (BPO)</option>
+  </select>
+
+  <label for="inversion">Inversión Proyectada ($):</label>
+  <input type="number" id="inversion" required>
+
+  <label for="empleos">Empleos Proyectados:</label>
+  <input type="number" id="empleos" required>
+
+  <button type="submit" id="btnEnviar">Enviar Solicitud</button>
+</form>
+
+<!-- Elemento para mostrar estados de carga o mensajes de error (RF-10, RF-11) -->
+<div id="mensajeEstado"></div>
+
+<script src="src/js/app.js"></script>
