@@ -1,1 +1,19 @@
-{}
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "username": "admin@zofranca.cr",
+      "password": "admin",
+      "nombre": "Administrador PROCOMER",
+      "rol": "admin"
+    },
+    {
+      "id": "2",
+      "username": "cliente@techcorp.cr",
+      "password": "cliente123",
+      "nombre": "TechCorp Costa Rica",
+      "rol": "cliente"
+    }
+  ],
+  "solicitudes": []
+}
