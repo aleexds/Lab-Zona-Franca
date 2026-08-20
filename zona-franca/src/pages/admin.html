@@ -1,11 +1,192 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Control - ZoFranca CR</title>
+  <link rel="stylesheet" href="../assets/admins.css">
 </head>
-<body>
-    <h1>admin</h1>
+<body class="dashboard-body">
+
+  <div class="dashboard-container">
+    
+    <!-- BARRA LATERAL (SIDEBAR) -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="logo-icon">🛡️</span>
+        <span class="brand-name">ZoFranca CR</span>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="admin.html" class="nav-item active">
+          <span class="nav-icon">📊</span> Dashboard / General
+        </a>
+        <a href="solicitudes-instalacion.html" class="nav-item">
+          <span class="nav-icon">📄</span> Solicitudes de Instalación
+        </a>
+        <a href="reportes-cumplimiento.html" class="nav-item">
+          <span class="nav-icon">🛡️</span> Reportes de Cumplimiento
+        </a>
+        <a href="alertas-incumplimiento.html" class="nav-item">
+          <span class="nav-icon">⚠️</span> Alertas de Incumplimiento
+        </a>
+        <a href="configuracion.html" class="nav-item">
+          <span class="nav-icon">⚙️</span> Configuración
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="btnCerrarSesion" class="btn-logout">
+          <span>🚪</span> Cerrar Sesión
+        </button>
+      </div>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+      
+      <!-- ENCABEZADO SUPERIOR -->
+      <header class="top-header">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="inputBuscarGeneral" placeholder="Buscar trámites o empresas...">
+        </div>
+
+        <div class="header-right">
+          <div class="backend-status online">
+            <span class="status-dot"></span> BACKEND: ONLINE (JSON-SERVER)
+          </div>
+          <button class="icon-btn" title="Notificaciones">🔔</button>
+          
+          <div class="user-profile">
+            <div class="user-info">
+              <span class="user-name" id="nombreUsuarioHeader">Analista Senior</span>
+              <span class="user-role">Admin Portal</span>
+            </div>
+            <div class="avatar">👤</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- SECCIÓN DEL PANEL DE CONTROL -->
+      <section class="dashboard-section">
+        
+        <div class="section-title-row">
+          <div>
+            <h1 class="page-title">Panel de Control <span class="badge-sub">ZONA FRANCA CR</span></h1>
+            <p class="page-subtitle">Resumen de actividad, solicitudes entrantes y estado de cumplimiento de empresas instaladas.</p>
+          </div>
+          <button id="btnNuevaSolicitud" class="btn-primary-action">+ Registrar Nueva Empresa</button>
+        </div>
+
+        <!-- TARJETAS METRICAS (KPIs) -->
+        <div class="kpi-grid">
+          
+          <div class="kpi-card card-dark">
+            <span class="kpi-title">TOTAL SOLICITUDES</span>
+            <div class="kpi-value" id="kpiTotal">0</div>
+            <span class="kpi-trend positive">+12% vs mes anterior</span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header-row">
+              <span class="kpi-icon status-green">✓</span>
+              <span class="kpi-status-tag tag-green">RECOMENDADAS</span>
+            </div>
+            <div class="kpi-value" id="kpiRecomendadas">0</div>
+            <span class="kpi-subtext">SOLICITUDES</span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header-row">
+              <span class="kpi-icon status-yellow">📋</span>
+              <span class="kpi-status-tag tag-yellow">EN REVISIÓN</span>
+            </div>
+            <div class="kpi-value" id="kpiEnRevision">0</div>
+            <span class="kpi-subtext">SOLICITUDES</span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-header-row">
+              <span class="kpi-icon status-red">✕</span>
+              <span class="kpi-status-tag tag-red">RECHAZADAS</span>
+            </div>
+            <div class="kpi-value" id="kpiRechazadas">0</div>
+            <span class="kpi-subtext">SOLICITUDES</span>
+          </div>
+
+        </div>
+
+        <!-- BARRA DE TIEMPO PROMEDIO -->
+        <div class="time-card">
+          <div class="time-info">
+            <span class="time-icon">⏱️</span>
+            <div>
+              <span class="time-label">Tiempo Prom. Respuesta</span>
+              <div class="time-value">2.4 días</div>
+            </div>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" style="width: 75%;"></div>
+          </div>
+          <span class="time-target">Objetivo: &lt; 3 días</span>
+        </div>
+
+        <!-- TABLA Y FILTROS -->
+        <div class="content-card">
+          
+          <div class="table-header-tools">
+            <div class="table-title">
+              <span>📄</span>
+              <h2>Solicitudes de Instalación</h2>
+            </div>
+
+            <div class="filters-group">
+              <select id="filtroSector" class="select-filter">
+                <option value="todos">Sector: Todos</option>
+                <option value="Tecnología">Tecnología</option>
+                <option value="Manufactura">Manufactura</option>
+                <option value="Servicios">Servicios</option>
+                <option value="Ciencias de la Vida">Ciencias de la Vida</option>
+              </select>
+
+              <select id="filtroEstado" class="select-filter">
+                <option value="todos">Estado: Todos</option>
+                <option value="Recomendada">Recomendada</option>
+                <option value="En Revisión">En Revisión</option>
+                <option value="No Recomendada">No Recomendada</option>
+              </select>
+
+              <button id="btnActualizarTabla" class="btn-secondary">🔄 Actualizar</button>
+            </div>
+          </div>
+
+          <!-- TABLA PRINCIPAL DE DATOS -->
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Empresa</th>
+                  <th>Sector</th>
+                  <th>Inversión / Empleos</th>
+                  <th>Puntaje IA</th>
+                  <th>Pre-Clasificación</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tablaSolicitudesBody">
+                <!-- Se llena dinámicamente con JS desde el db.json -->
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
 </body>
 </html>
