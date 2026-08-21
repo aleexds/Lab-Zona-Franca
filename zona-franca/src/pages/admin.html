@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard de Gerencia y Auditoría - INTELiGENCIA</title>
+  
+  <!-- Tipografía Montserrat e Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="../styles/admins.css">
+</head>
+<body>
+
+  <div class="dashboard-container">
+    
+    <!-- Sidebar / Menú Lateral Oscuro -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="brand-box">
+          <div class="brand-text">
+            <img class="logo-box" src="../img/esencial-removebg-preview.png"></img>
+          <img class="logo-text" src="../img/PROCOMER.png"></img>
+          </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active">
+            <i class="fa-solid fa-border-all"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fa-regular fa-clipboard"></i>
+            <span>Auditoría</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fa-regular fa-folder-open"></i>
+            <span>Reportes</span>
+          </a>
+          <a href="#" class="nav-item">
+            <i class="fa-solid fa-gear"></i>
+            <span>Configuración</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="access-badge">
+          <div class="access-icon"><i class=""></i></div>
+          <div class="access-info">
+            <span class="access-title"></span>
+            <span class="access-level"></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      
+      <!-- Topbar / Header del Dashboard -->
+      <header class="topbar">
+        <div class="topbar-left">
+          
+            
+            <span class="portal-tittle">Gerencia General / Auditoría Externa</span>
+            
+          </button>
+        </div>
+
+        <div class="topbar-right">
+          <button class="icon-btn notification-btn">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-badge"></span>
+          </button>
+          
+          <div class="user-profile">
+            <div class="user-info">
+              <span class="user-name">Admin Central</span>
+              <span class="user-id">ID: 4022-881</span>
+            </div>
+            <div class="user-avatar">
+              <i class="fa-regular fa-user"></i>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard View Content -->
+      <main class="dashboard-content">
+        
+        <!-- Header de la vista con Filtro y Exportar -->
+        <div class="content-header">
+          <div>
+            <h1 class="page-title">Dashboard de Gerencia y Auditoría</h1>
+            <p class="page-subtitle"><span class="status-dot"></span> Monitoreo de procesos y rendimiento en tiempo real</p>
+          </div>
+          
+          <div class="header-actions">
+            <button class="btn-time-filter">
+              <i class="fa-regular fa-calendar"></i>
+              <span>Último Trimestre</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <button class="btn-export">
+              <i class="fa-solid fa-download"></i>
+              <span>Exportar Registro</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 KPI Metric Cards -->
+        <div class="metrics-grid">
+          
+          <!-- KPI 1 -->
+          <div class="metric-card">
+            <div class="metric-card-header">
+              <div class="metric-icon-box"><i class="fa-regular fa-clock"></i></div>
+              <span class="trend-badge red-light"><i class="fa-solid fa-arrow-down-short-wide"></i> 12%</span>
+            </div>
+            <span class="metric-label">TIEMPO PROM. RESOLUCIÓN</span>
+            <div class="metric-value">4.2 <small>días</small></div>
+          </div>
+
+          <!-- KPI 2 -->
+          <div class="metric-card">
+            <div class="metric-card-header">
+              <div class="metric-icon-box teal-icon"><i class="fa-solid fa-sliders"></i></div>
+              <svg class="sparkline-svg" viewBox="0 0 60 20">
+                <path d="M0,15 Q15,5 30,12 T60,2" fill="none" stroke="#008f8e" stroke-width="2"/>
+              </svg>
+            </div>
+            <span class="metric-label">APROBACIÓN VS RECHAZO</span>
+            <div class="metric-value">82<small>%</small></div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" style="width: 82%;"></div>
+            </div>
+          </div>
+
+          <!-- KPI 3 -->
+          <div class="metric-card">
+            <div class="metric-card-header">
+              <div class="metric-icon-box"><i class="fa-solid fa-dollar-sign"></i></div>
+              <span class="badge-tag">PROYECTADO Q4</span>
+            </div>
+            <span class="metric-label">INVERSIÓN TOTAL</span>
+            <div class="metric-value">$145.2 <small>M</small></div>
+          </div>
+
+          <!-- KPI 4 -->
+          <div class="metric-card">
+            <div class="metric-card-header">
+              <div class="metric-icon-box"><i class="fa-solid fa-user-group"></i></div>
+              <span class="trend-badge green-light"><i class="fa-solid fa-arrow-up"></i> +240</span>
+            </div>
+            <span class="metric-label">EMPLEOS DIRECTOS</span>
+            <div class="metric-value">1,840 <small>puestos</small></div>
+          </div>
+
+        </div>
+
+        <!-- Main Grid: Flujo de Eficiencia (Card Oscura) + Tabla de Auditoría -->
+        <div class="workspace-grid">
+          
+          <!-- Column Left: Flujo de Eficiencia -->
+          <section class="efficiency-card">
+            <h2 class="card-title">Flujo de Eficiencia</h2>
+            <p class="card-description">Distribución porcentual del tiempo por fase de procesamiento en el pipeline principal.</p>
+
+            <!-- Donut Chart Canvas Container -->
+            <div class="donut-chart-wrapper">
+              <div class="donut-chart">
+                <div class="donut-center">
+                  <span class="donut-percentage">94%</span>
+                  <span class="donut-label">SLA CUMPLIDO</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Legend breakdown -->
+            <div class="efficiency-legend">
+              <div class="legend-item">
+                <div class="legend-info">
+                  <span class="dot dot-teal"></span>
+                  <span class="legend-name">Evaluación IA (45%)</span>
+                </div>
+                <span class="legend-value">1.9d</span>
+              </div>
+
+              <div class="legend-item">
+                <div class="legend-info">
+                  <span class="dot dot-navy"></span>
+                  <span class="legend-name">Revisión Legal (30%)</span>
+                </div>
+                <span class="legend-value">1.2d</span>
+              </div>
+
+              <div class="legend-item">
+                <div class="legend-info">
+                  <span class="dot dot-gray"></span>
+                  <span class="legend-name">Aprobación/Ingreso (25%)</span>
+                </div>
+                <span class="legend-value">1.1d</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Column Right: Registro de Auditoría (Audit Log) -->
+          <section class="card table-card">
+            <div class="card-header">
+              <div>
+                <h2>Registro de Auditoría (Audit Log)</h2>
+                <p class="card-subtitle">Trazabilidad inmutable de eventos críticos del sistema</p>
+              </div>
+              <button class="btn-icon-ghost"><i class="fa-solid fa-sliders"></i></button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID / TIMESTAMP</th>
+                    <th>EMPRESA / ENTIDAD</th>
+                    <th>HITO / FASE</th>
+                    <th>RESPONSABLE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Row 1 -->
+                  <tr>
+                    <td class="font-bold">
+                      #TRX-8922
+                      <span class="table-subtext">Hoy, 09:11 AM</span>
+                    </td>
+                    <td>
+                      <div class="company-cell">
+                        <div class="company-avatar avatar-gray">G</div>
+                        <span class="company-name">GlobalTech S.A.</span>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="status-pill pill-teal">
+                        <i class="fa-solid fa-robot"></i> Evaluación IA
+                      </span>
+                    </td>
+                    <td>
+                      <div class="user-cell">
+                        <i class="fa-solid fa-circle-nodes icon-small"></i>
+                        <span>System_AI_1</span>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- Row 2 -->
+                  <tr>
+                    <td class="font-bold">
+                      #TRX-8921
+                      <span class="table-subtext">Hoy, 08:15 AM</span>
+                    </td>
+                    <td>
+                      <div class="company-cell">
+                        <div class="company-avatar avatar-gray">A</div>
+                        <span class="company-name">AgroExport CR</span>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="status-pill pill-gray">
+                        <i class="fa-solid fa-scale-balanced"></i> Revisión Legal
+                      </span>
+                    </td>
+                    <td>
+                      <div class="user-cell">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=60&q=80" alt="Avatar" class="avatar-img">
+                        <span>L. Camacho</span>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- Row 3 -->
+                  <tr>
+                    <td class="font-bold">
+                      #TRX-8920
+                      <span class="table-subtext">Ayer, 16:45 PM</span>
+                    </td>
+                    <td>
+                      <div class="company-cell">
+                        <div class="company-avatar avatar-pink">M</div>
+                        <span class="company-name">MedDev Solutions</span>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="status-pill pill-blue">
+                        <i class="fa-solid fa-circle-check"></i> Aprobación Final
+                      </span>
+                    </td>
+                    <td>
+                      <div class="user-cell">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=60&q=80" alt="Avatar" class="avatar-img">
+                        <span>Comité Dir.</span>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- Row 4 -->
+                  <tr>
+                    <td class="font-bold">
+                      #TRX-8919
+                      <span class="table-subtext">Ayer, 14:20 PM</span>
+                    </td>
+                    <td>
+                      <div class="company-cell">
+                        <div class="company-avatar avatar-gray">S</div>
+                        <span class="company-name">Synergy Corp</span>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="status-pill pill-teal">
+                        <i class="fa-solid fa-robot"></i> Evaluación IA
+                      </span>
+                    </td>
+                    <td>
+                      <div class="user-cell">
+                        <i class="fa-solid fa-circle-nodes icon-small"></i>
+                        <span>System_AI_1</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Table Footer Pagination -->
+            <div class="table-footer">
+              <span class="pagination-info">Mostrando 4 de 1,248 registros</span>
+              <div class="pagination-controls">
+                <button class="btn-page" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="btn-page"><i class="fa-solid fa-chevron-right"></i></button>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+      </main>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
