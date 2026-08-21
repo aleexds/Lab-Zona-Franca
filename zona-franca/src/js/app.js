@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('modal-solicitud');
-  const btnSolicitudes = document.getElementById('btn-solicitudes');
   const btnClose = document.getElementById('modal-close');
   const btnCancel = document.getElementById('modal-cancel');
+
+  // Seleccionamos TODOS los botones que deben abrir el modal
+  const openModalButtons = document.querySelectorAll('.btn-open-modal');
 
   // Función para abrir la modal
   const openModal = (e) => {
@@ -15,12 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
     modal.classList.remove('active');
   };
 
-  // Event Listeners
-  if (btnSolicitudes) btnSolicitudes.addEventListener('click', openModal);
+  // Asignamos el evento click a cada botón de la lista
+  openModalButtons.forEach(button => {
+    button.addEventListener('click', openModal);
+  });
+
+  // Eventos de cierre
   if (btnClose) btnClose.addEventListener('click', closeModal);
   if (btnCancel) btnCancel.addEventListener('click', closeModal);
 
-  // Cerrar si se hace clic fuera del contenido blanco
+  // Cerrar al hacer clic en el fondo oscuro
   window.addEventListener('click', (e) => {
     if (e.target === modal) {
       closeModal();
