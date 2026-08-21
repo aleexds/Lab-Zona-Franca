@@ -3,66 +3,267 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal de Gestión y Cumplimiento - ZoFranca CR</title>
-  <link rel="stylesheet" href="src/style.css">
+  <title>PROCOMER - Promotora del Comercio Exterior de Costa Rica</title>
+  
+  <!-- Tipografía Montserrat e Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="./src/style.css">
 </head>
 <body>
 
-  <div class="login-card">
-    <div class="logo-container">
-      <span class="logo-text">🛡️ ZoFranca</span>
+
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">
+        <img class="logo-box" src="./src/img/esencial-removebg-preview.png"></img>
+        <img class="logo-text" src="./src/img/procomer.png"></img>
+      </div>
+      <div class="header-right">
+        <button class="icon-btn" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="icon-btn" aria-label="Usuario"><i class="fa-solid fa-circle-user"></i></button>
+        <span class="lang-selector"><i class="fa-solid fa-globe"></i> ES</span>
+      </div>
     </div>
+  </header>
 
-    <h1 class="title">Portal de Gestión y Cumplimiento</h1>
-    <div class="sub-brand">ZOFRANCA CR</div>
-    <p class="subtitle">Inicie sesión para acceder al sistema</p>
+  <!-- Hero Section con Fondo e Imagen de Puerto -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1 class="hero-title">Conectamos a Costa Rica con el mundo, creando oportunidades para nuestra gente</h1>
+      <p class="hero-subtitle">Impulsando el comercio, la inversión y el talento costarricense hacia nuevas fronteras globales de manera sostenible.</p>
+      
+      <!-- 3 Featured Cards Floating -->
+      <div class="hero-cards-grid">
+        <!-- Card 1 -->
+        <div class="hero-card">
+          <div class="card-icon-wrapper">
+            <i class="fa-solid fa-plane-departure"></i>
+          </div>
+          <h3>Exportador</h3>
+          <p>Herramientas, asesoría y programas de formación para llevar sus productos y servicios a mercados internacionales.</p>
+          <a href="#" class="btn-navy">Explorar</a>
+        </div>
 
-    <!-- Role Pills Selector -->
-    <div class="role-selector">
-      <button type="button" class="role-btn" onclick="seleccionarRol('Empresa', this)">Empresa</button>
-      <button type="button" class="role-btn" onclick="seleccionarRol('Admin', this)">Admin</button>
+        <!-- Card 2 -->
+        <div class="hero-card">
+          <div class="card-icon-wrapper">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+          <h3>Comprador</h3>
+          <p>Encuentre la mejor oferta exportable de Costa Rica. Conectamos su negocio con proveedores de clase mundial.</p>
+          <a href="#" class="btn-navy">Explorar</a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="hero-card">
+          <div class="card-icon-wrapper">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+          <h3>Inversionista</h3>
+          <p>Descubra por qué Costa Rica es el destino ideal para su inversión directa. Incentivos, talento y estabilidad.</p>
+          <a href="#" class="btn-navy">Explorar</a>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <form id="formLogin">
-      <div class="form-group">
-        <label for="username">Correo Electrónico / Usuario</label>
-        <div class="input-wrapper">
-          <span class="input-icon">👤</span>
-          <input type="text" id="username" placeholder="usuario@empresa.com" required>
-        </div>
+  <!-- Navigation Bar / Quick Links -->
+  <div class="quick-nav-wrapper">
+    <div class="container">
+      <div class="quick-nav">
+        <a href="#" class="quick-item active">
+          <i class="fa-solid fa-house"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="#" class="quick-item">
+          <i class="fa-solid fa-briefcase"></i>
+          <span>Servicios</span>
+        </a>
+        <a href="#" class="quick-item">
+          <i class="fa-solid fa-file-signature"></i>
+          <span>Crear solicitud</span>
+        </a>
+        <a href="#" class="quick-item">
+          <i class="fa-solid fa-newspaper"></i>
+          <span>Noticias</span>
+        </a>
+        <a href="#" class="quick-item">
+          <i class="fa-solid fa-bars"></i>
+          <span>Menú</span>
+        </a>
+        
+        <button class="assistant-btn">
+          <i class="fa-solid fa-headset"></i> Asistente
+        </button>
       </div>
-
-      <div class="form-group">
-        <div class="label-row">
-          <label for="password">Contraseña</label>
-          <a href="#" class="forgot-link">¿Olvidó su contraseña?</a>
-        </div>
-        <div class="input-wrapper">
-          <span class="input-icon">🔒</span>
-          <input type="password" id="password" placeholder="••••••••" required>
-          <span class="toggle-password">👁️</span>
-        </div>
-      </div>
-
-      <div class="checkbox-group">
-        <input type="checkbox" id="recordar">
-        <label for="recordar">Recordar mi usuario</label>
-      </div>
-
-      <button type="submit" class="btn-submit">
-        Iniciar Sesión <span>→</span>
-      </button>
-    </form>
-
-    <div id="mensajeEstado"></div>
+    </div>
   </div>
 
-  <div class="footer-text">
-    Plataforma oficial de seguimiento y pre-clasificación con IA<br>
-    <strong>PROCOMER CR</strong>
-  </div>
+  <!-- Main Content -->
+  <main class="main-content">
+    
+    <!-- Section: Impulsamos su negocio -->
+    <section class="section-business">
+      <div class="container">
+        <h2 class="section-title text-center">Impulsamos su negocio</h2>
+        <p class="section-subtitle text-center">Acompañamos el ciclo integral del comercio exterior con soluciones digitales para el crecimiento de su empresa.</p>
 
-  <!-- Nota el type="module" aquí -->
-  <script type="module" src="src/js/app.js"></script>
+        <div class="services-grid">
+          <!-- Item 1 -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-landmark"></i></div>
+            <h3>Regímenes Especiales</h3>
+            <p>Información sobre normativas y regímenes de exportación.</p>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+            <h3>Simplificación de Trámites</h3>
+            <p>Plataforma VUCE y VUI para agilizar sus operaciones.</p>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-user-gear"></i></div>
+            <h3>Talento Humano</h3>
+            <p>Programas de formación y encadenamiento académico.</p>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-chart-simple"></i></div>
+            <h3>Portal Estadístico</h3>
+            <p>Datos, análisis e inteligencia comercial estratégica.</p>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <h3>Encadenamientos</h3>
+            <p>Conectando empresas locales con compradores internacionales.</p>
+          </div>
+
+          <!-- Item 6: Featured Teal Card -->
+          <div class="service-card featured-teal">
+            <div class="service-icon"><i class="fa-solid fa-building-flag"></i></div>
+            <h3>Zona Franca</h3>
+            <p>Gestione su solicitud de Régimen de Zona Franca de manera digital y simplificada.</p>
+            <a href="#" class="btn-light">Solicitar Aquí</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Plataformas Digitales -->
+    <section class="section-platforms">
+      <div class="container">
+        <h2 class="section-title">Plataformas Digitales</h2>
+
+        <div class="platforms-wrapper">
+          <!-- Left Tabs -->
+          <div class="platform-tabs">
+            <button class="tab-btn active">VUCE (Ventanilla Única de Comercio Exterior)</button>
+            <button class="tab-btn">VUI (Ventanilla Única de Inversión)</button>
+            <button class="tab-btn">Buy From CR</button>
+            <button class="tab-btn">Portal Estadístico</button>
+          </div>
+
+          <!-- Center Content -->
+          <div class="platform-detail">
+            <h3>Trámites ágiles y seguros</h3>
+            <p>La Ventanilla Única de Comercio Exterior centraliza y simplifica los permisos de exportación e importación, reduciendo tiempos y costos operativos para su empresa.</p>
+            <a href="#" class="btn-navy">Ingresar a VUCE</a>
+          </div>
+
+          <!-- Right Image Showcase -->
+          <div class="platform-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Dashboard Plataforma VUCE">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Preguntas Frecuentes -->
+    <section class="section-faq">
+      <div class="container">
+        <h2 class="section-title text-center">Preguntas Frecuentes</h2>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Cómo inicio el trámite para el Régimen de Zona Franca?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>Puede iniciar la solicitud mediante nuestro portal en línea ingresando a la sección de Zona Franca o a través de la plataforma VUI completando los formularios correspondientes.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Qué requisitos necesito para usar VUCE?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>Requiere contar con firma digital habilitada en Costa Rica, registrar la empresa en el sistema VUCE 2.0 y tener la personería jurídica al día.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>¿Cómo obtener la licencia esencial COSTA RICA?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>Debe completar la autoevaluación inicial en el sitio web de la Marca País, someterse a una auditoría técnica en los 5 valores (Excelencia, Sostenibilidad, Innovación, Origen Social) y obtener la aprobación del protocolo.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-top">
+        <a href="#" class="footer-contact-link">Contacto</a>
+        <div class="footer-phone">800-PROCOMER</div>
+      </div>
+
+      <div class="footer-middle">
+        <div class="footer-column">
+          <a href="#">Servicios</a>
+          <a href="#">Noticias</a>
+        </div>
+        <div class="footer-column">
+          <a href="#">Transparencia</a>
+          <a href="#">Legal</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-socials">
+          <a href="#"><i class="fa-solid fa-share-nodes"></i></a>
+          <a href="#"><i class="fa-regular fa-envelope"></i></a>
+        </div>
+        <div class="footer-brand">
+          <span>esencial COSTA RICA</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
