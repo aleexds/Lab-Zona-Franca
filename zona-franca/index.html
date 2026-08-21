@@ -88,9 +88,10 @@
           <i class="fa-solid fa-briefcase"></i>
           <span>Servicios</span>
         </a>
-        <a href="#" class="quick-item">
-          <i class="fa-solid fa-file-signature"></i>
-          <span>Crear solicitud</span>
+        <!-- Reemplaza el enlace de Solicitudes en el quick-nav por este con id: -->
+        <a href="#" id="btn-solicitudes" class="quick-item">
+        <i class="fa-solid fa-file-signature"></i>
+        <span>Solicitudes</span>
         </a>
         <a href="#" class="quick-item">
           <i class="fa-solid fa-newspaper"></i>
@@ -248,8 +249,8 @@
           <a href="#">Noticias</a>
         </div>
         <div class="footer-column">
-          <a href="#">Panel analista</a>
-          <a href="#">Panel administrador</a>
+          <a href="#">Transparencia</a>
+          <a href="#">Legal</a>
         </div>
       </div>
 
@@ -265,5 +266,79 @@
     </div>
   </footer>
 
+  <!-- MODAL: Solicitud de Ingreso al Régimen de Zona Franca -->
+<div id="modal-solicitud" class="modal-overlay">
+  <div class="modal-container">
+    
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <div>
+        <h2 class="modal-title">Solicitud de Ingreso al Régimen de Zona Franca</h2>
+        <p class="modal-subtitle">Complete los datos preliminares de su proyecto para la evaluación inicial de elegibilidad.</p>
+      </div>
+      <button class="modal-close-btn" id="modal-close">&times;</button>
+    </div>
+
+    <!-- Modal Body / Form -->
+    <form id="form-zona-franca" class="modal-body">
+      <div class="form-grid">
+        
+        <div class="form-group">
+          <label for="sector">Sector Productivo</label>
+          <select id="sector" class="form-control">
+            <option value="dispositivos">Dispositivos Médicos</option>
+            <option value="servicios">Servicios Globales</option>
+            <option value="manufactura">Manufactura Avanzada</option>
+            <option value="agroindustria">Agroindustria</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="inversion-minima">Inversión Mínima Requerida (USD)</label>
+          <input type="text" id="inversion-minima" class="form-control" value="$ 0.00" readonly>
+        </div>
+
+        <div class="form-group">
+          <label for="inversion-proyectada">Inversión Proyectada (USD)</label>
+          <input type="text" id="inversion-proyectada" class="form-control" placeholder="$ 0.00">
+        </div>
+
+        <div class="form-group">
+          <label for="empleos">Empleos Mínimos Esperados</label>
+          <input type="number" id="empleos" class="form-control" placeholder="Cantidad de empleos">
+        </div>
+
+      </div>
+
+      <!-- File Upload Box -->
+      <div class="form-group file-upload-group">
+        <label>Documentos de Respaldo</label>
+        <div class="dropzone">
+          <i class="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
+          <p class="dropzone-text">Arrastre aquí sus documentos de respaldo o <span>examine su equipo</span></p>
+          <span class="dropzone-hint">Formatos permitidos: PDF, ZIP (Máx 10MB)</span>
+          <input type="file" class="file-input" multiple>
+        </div>
+      </div>
+
+      <!-- Modal Footer (Con corrección de alineación y scroll) -->
+      <div class="modal-footer">
+        <div class="privacy-note">
+          <i class="fa-solid fa-lock"></i>
+          <span>Sus datos están protegidos y serán analizados por el motor de evaluación de PROCOMER.</span>
+        </div>
+        
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="modal-cancel">Cancelar</button>
+          <button type="submit" class="btn-primary">Enviar Solicitud a Evaluación</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<!-- Script JS para interacciones de la Modal -->
+<script src="./src/js/app.js"></script>
 </body>
 </html>
