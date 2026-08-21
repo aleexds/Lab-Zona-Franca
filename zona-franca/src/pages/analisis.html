@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Analista e Inteligencia de Negocios - PROCOMER</title>
+  
+  <!-- Tipografía Montserrat e Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="../styles/analisiss.css">
+</head>
+<body>
+
+  <div class="dashboard-container">
+    
+    <!-- Sidebar / Menú Lateral -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <img class="logo-box" src="../img/esencial-removebg-preview.png"></img>
+          <img class="logo-text" src="../img/PROCOMER.png"></img>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active">
+          <i class="fa-solid fa-border-all"></i>
+          <span>Dashboard de Métricas</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-square-check"></i>
+          <span>Solicitudes y Scoring IA</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-address-book"></i>
+          <span>Directorio y Cumplimiento</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Configuración de IA</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      
+      <!-- Topbar / Header del Dashboard -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <span class="portal-title">Portal del Analista</span>
+          <span class="portal-subtitle">Control de Regímenes y Solicitudes</span>
+        </div>
+
+        <div class="topbar-center">
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" placeholder="Buscar empresa o solicitud">
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="icon-btn notification-btn">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-badge"></span>
+          </button>
+          <div class="user-profile">
+            <div class="user-info">
+              <span class="user-name">Analista Senior</span>
+              <span class="user-role">Zona Franca</span>
+            </div>
+            <div class="user-avatar">
+              <i class="fa-regular fa-user"></i>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard View Content -->
+      <main class="dashboard-content">
+        
+        <!-- Header de la vista con botón Exportar -->
+        <div class="content-header">
+          <div>
+            <h1 class="page-title">Panel de Analista e Inteligencia de Negocios</h1>
+            <p class="page-subtitle">Resumen de solicitudes activas, evaluaciones del motor de IA y estado de cumplimiento general.</p>
+          </div>
+          <button class="btn-export">
+            <i class="fa-solid fa-download"></i>
+            <span>Exportar Reporte</span>
+          </button>
+        </div>
+
+        <!-- 4 KPI Metric Cards -->
+        <div class="metrics-grid">
+          <!-- KPI 1 -->
+          <div class="metric-card">
+            <div class="metric-card-header">
+              <div class="metric-icon-box">
+                <i class="fa-regular fa-file-lines"></i>
+              </div>
+              <span class="badge badge-neutral">Hoy</span>
+            </div>
+            <span class="metric-label">SOLICITUDES EN COLA</span>
+            <div class="metric-value-wrapper">
+              <span class="metric-value">42</span>
+              <span class="trend-indicator positive"><i class="fa-solid fa-arrow-up"></i> 12%</span>
+            </div>
+          </div>
+
+          <!-- KPI 2 -->
+          <div class="metric-card gradient-teal-bg">
+            <div class="metric-card-header">
+              <div class="metric-icon-box">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+            </div>
+            <span class="metric-label">PROMEDIO MATCH IA</span>
+            <div class="metric-value-wrapper">
+              <span class="metric-value">84 <small>/100</small></span>
+            </div>
+          </div>
+
+          <!-- KPI 3 -->
+          <div class="metric-card gradient-red-bg">
+            <div class="metric-card-header">
+              <div class="metric-icon-box red-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <span class="badge badge-danger">Crítico</span>
+            </div>
+            <span class="metric-label">EMPRESAS EN ALERTA</span>
+            <div class="metric-value-wrapper">
+              <span class="metric-value">5</span>
+            </div>
+          </div>
+
+          <!-- KPI 4 -->
+          <div class="metric-card">
+            <div class="metric-card-header">
+              <div class="metric-icon-box">
+                <i class="fa-regular fa-circle-check"></i>
+              </div>
+              <span class="badge badge-neutral">Mes</span>
+            </div>
+            <span class="metric-label">APROBADAS</span>
+            <div class="metric-value-wrapper">
+              <span class="metric-value">128</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Workspace 2-Column Layout -->
+        <div class="workspace-grid">
+          
+          <!-- Column Left: Gestión de Solicitudes y Scoring IA (Table) -->
+          <section class="card table-card">
+            <div class="card-header">
+              <h2>Gestión de Solicitudes y Scoring IA</h2>
+              <div class="card-actions">
+                <button class="btn-icon-ghost"><i class="fa-solid fa-sliders"></i></button>
+                <button class="btn-icon-ghost"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID / FECHA</th>
+                    <th>EMPRESA</th>
+                    <th>TRÁMITE</th>
+                    <th class="text-center">SCORE IA</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Row 1 -->
+                  <tr>
+                    <td class="font-bold">
+                      #ZF-2023-089
+                      <span class="table-subtext">24 Oct, 2023</span>
+                    </td>
+                    <td>
+                      <div class="company-cell">
+                        <div class="company-avatar avatar-teal">M</div>
+                        <span class="company-name">MedicalTech S.A.</span>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="procedure-tag">
+                        <i class="fa-solid fa-building"></i> Ingreso Zona Franca
+                      </span>
+                    </td>
+                    <td class="text-center">
+                      <div class="score-circle score-high">
+                        <span>92</span>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- Row 2 -->
+                  <tr>
+                    <td class="font-bold">
+                      #EX-2023-142
+                      <span class="table-subtext">22 Oct, 2023</span>
+                    </td>
+                    <td>
+                      <div class="company-cell">
+                        <div class="company-avatar avatar-navy">A</div>
+                        <span class="company-name">AgroExportadores Sur</span>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="procedure-tag">
+                        <i class="fa-solid fa-truck"></i> Permiso Exportación
+                      </span>
+                    </td>
+                    <td class="text-center">
+                      <div class="score-circle score-mid">
+                        <span>65</span>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- Row 3 -->
+                  <tr>
+                    <td class="font-bold">
+                      #ZF-2023-091
+                      <span class="table-subtext">20 Oct, 2023</span>
+                    </td>
+                    <td>
+                      <div class="company-cell">
+                        <div class="company-avatar avatar-navy">T</div>
+                        <span class="company-name">TechSolutions CR</span>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="procedure-tag">
+                        <i class="fa-solid fa-building"></i> Ingreso Zona Franca
+                      </span>
+                    </td>
+                    <td class="text-center">
+                      <div class="score-circle score-low">
+                        <span>40</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="card-footer">
+              <a href="#" class="footer-link">Ver todas las solicitudes <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </section>
+
+          <!-- Column Right: Directorio y Cumplimiento -->
+          <section class="card directory-card">
+            <div class="card-header border-none">
+              <div>
+                <h2>Directorio y Cumplimiento</h2>
+                <p class="card-subtitle">Estado actual de empresas activas.</p>
+              </div>
+            </div>
+
+            <div class="directory-list">
+              <!-- Company Item 1 -->
+              <div class="directory-item">
+                <div class="directory-icon"><i class="fa-solid fa-microscope"></i></div>
+                <div class="directory-info">
+                  <div class="directory-header">
+                    <h4>Global Manufacturing</h4>
+                    <i class="fa-solid fa-chevron-right arrow-icon"></i>
+                  </div>
+                  <span class="directory-id">ID: PRO-4492</span>
+                  <div class="status-badge badge-success">
+                    <i class="fa-regular fa-circle-check"></i> Al día
+                  </div>
+                </div>
+              </div>
+
+              <!-- Company Item 2 (In Alert / Non-compliant) -->
+              <div class="directory-item highlight-alert">
+                <div class="directory-icon icon-red"><i class="fa-solid fa-vial"></i></div>
+                <div class="directory-info">
+                  <div class="directory-header">
+                    <h4>BioPharma Ltd.</h4>
+                  </div>
+                  <span class="directory-id">ID: PRO-5102</span>
+                  <div class="status-badge badge-alert">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Incumplimiento
+                  </div>
+                  <div class="alert-box">
+                    Inversión Mínima no alcanzada en Q3.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Company Item 3 -->
+              <div class="directory-item">
+                <div class="directory-icon"><i class="fa-solid fa-globe"></i></div>
+                <div class="directory-info">
+                  <div class="directory-header">
+                    <h4>Servicios Globales G&T</h4>
+                    <i class="fa-solid fa-chevron-right arrow-icon"></i>
+                  </div>
+                  <span class="directory-id">ID: PRO-3311</span>
+                  <div class="status-badge badge-success">
+                    <i class="fa-regular fa-circle-check"></i> Al día
+                  </div>
+                </div>
+              </div>
+
+              <!-- Company Item 4 -->
+              <div class="directory-item">
+                <div class="directory-icon"><i class="fa-solid fa-store"></i></div>
+                <div class="directory-info">
+                  <div class="directory-header">
+                    <h4>Textiles del Norte</h4>
+                  </div>
+                  <span class="directory-id">ID: PRO-2944</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer border-none">
+              <a href="#" class="footer-link">Ir al Directorio <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </section>
+
+        </div>
+
+      </main>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
