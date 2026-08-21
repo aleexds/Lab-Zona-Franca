@@ -45,10 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // REDIRECCIÓN CON RUTA ABSOLUTA LOCAL
         setTimeout(() => {
-          if (usuario.rol === 'admin') {
-            window.location.assign('./src/pages/admin.html'); // Usar assign con ./ asegura el cambio de ruta
-          } else if (usuario.rol === 'cliente') {
-            window.location.assign('./src/pages/cliente.html');
+          if (usuario.rol === "admin") {
+            window.location.assign("src/pages/admin.html");
+          } else if (usuario.rol === "cliente") {
+            window.location.assign("src/pages/dashboard.html");
           }
         }, 1000);
 
