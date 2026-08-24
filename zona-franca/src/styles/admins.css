@@ -769,3 +769,18 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+.main-footer {
+  margin-top: auto;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.main-footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-left: 16px;
+}

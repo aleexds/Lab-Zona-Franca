@@ -23,8 +23,8 @@
     <aside class="sidebar">
       <div class="sidebar-header">
         <div class="logo">
-          <img class="logo-box" src="../img/esencial-removebg-preview.png"></img>
-          <img class="logo-text" src="../img/PROCOMER.png"></img>
+          <img class="logo-box" src="../img/esencial-removebg-preview.png">
+          <img class="logo-text" src="../img/PROCOMER.png">
         </div>
       </div>
       
@@ -99,7 +99,6 @@
 
         <!-- 4 KPI Metric Cards -->
         <div class="metrics-grid">
-          <!-- KPI 1 -->
           <div class="metric-card">
             <div class="metric-card-header">
               <div class="metric-icon-box">
@@ -114,7 +113,6 @@
             </div>
           </div>
 
-          <!-- KPI 2 -->
           <div class="metric-card gradient-teal-bg">
             <div class="metric-card-header">
               <div class="metric-icon-box">
@@ -127,7 +125,6 @@
             </div>
           </div>
 
-          <!-- KPI 3 -->
           <div class="metric-card gradient-red-bg">
             <div class="metric-card-header">
               <div class="metric-icon-box red-icon">
@@ -141,7 +138,6 @@
             </div>
           </div>
 
-          <!-- KPI 4 -->
           <div class="metric-card">
             <div class="metric-card-header">
               <div class="metric-icon-box">
@@ -179,78 +175,8 @@
                     <th class="text-center">SCORE IA</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <!-- Row 1 -->
-                  <tr>
-                    <td class="font-bold">
-                      #ZF-2023-089
-                      <span class="table-subtext">24 Oct, 2023</span>
-                    </td>
-                    <td>
-                      <div class="company-cell">
-                        <div class="company-avatar avatar-teal">M</div>
-                        <span class="company-name">MedicalTech S.A.</span>
-                      </div>
-                    </td>
-                    <td>
-                      <span class="procedure-tag">
-                        <i class="fa-solid fa-building"></i> Ingreso Zona Franca
-                      </span>
-                    </td>
-                    <td class="text-center">
-                      <div class="score-circle score-high">
-                        <span>92</span>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <!-- Row 2 -->
-                  <tr>
-                    <td class="font-bold">
-                      #EX-2023-142
-                      <span class="table-subtext">22 Oct, 2023</span>
-                    </td>
-                    <td>
-                      <div class="company-cell">
-                        <div class="company-avatar avatar-navy">A</div>
-                        <span class="company-name">AgroExportadores Sur</span>
-                      </div>
-                    </td>
-                    <td>
-                      <span class="procedure-tag">
-                        <i class="fa-solid fa-truck"></i> Permiso Exportación
-                      </span>
-                    </td>
-                    <td class="text-center">
-                      <div class="score-circle score-mid">
-                        <span>65</span>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <!-- Row 3 -->
-                  <tr>
-                    <td class="font-bold">
-                      #ZF-2023-091
-                      <span class="table-subtext">20 Oct, 2023</span>
-                    </td>
-                    <td>
-                      <div class="company-cell">
-                        <div class="company-avatar avatar-navy">T</div>
-                        <span class="company-name">TechSolutions CR</span>
-                      </div>
-                    </td>
-                    <td>
-                      <span class="procedure-tag">
-                        <i class="fa-solid fa-building"></i> Ingreso Zona Franca
-                      </span>
-                    </td>
-                    <td class="text-center">
-                      <div class="score-circle score-low">
-                        <span>40</span>
-                      </div>
-                    </td>
-                  </tr>
+                <tbody id="tabla-solicitudes-body">
+                  <!-- JS poblará las solicitudes aquí dinámicamente desde db.json -->
                 </tbody>
               </table>
             </div>
@@ -270,7 +196,6 @@
             </div>
 
             <div class="directory-list">
-              <!-- Company Item 1 -->
               <div class="directory-item">
                 <div class="directory-icon"><i class="fa-solid fa-microscope"></i></div>
                 <div class="directory-info">
@@ -285,7 +210,6 @@
                 </div>
               </div>
 
-              <!-- Company Item 2 (In Alert / Non-compliant) -->
               <div class="directory-item highlight-alert">
                 <div class="directory-icon icon-red"><i class="fa-solid fa-vial"></i></div>
                 <div class="directory-info">
@@ -302,7 +226,6 @@
                 </div>
               </div>
 
-              <!-- Company Item 3 -->
               <div class="directory-item">
                 <div class="directory-icon"><i class="fa-solid fa-globe"></i></div>
                 <div class="directory-info">
@@ -317,7 +240,6 @@
                 </div>
               </div>
 
-              <!-- Company Item 4 -->
               <div class="directory-item">
                 <div class="directory-icon"><i class="fa-solid fa-store"></i></div>
                 <div class="directory-info">
@@ -342,5 +264,16 @@
 
   </div>
 
+  <footer class="main-footer">
+    <span>© 2026 PROCOMER. Todos los derechos reservados.</span>
+    <div class="main-footer-links">
+      <a href="#">Términos y Condiciones</a>
+      <a href="#">Privacidad</a>
+      <a href="#">Contacto</a>
+    </div>
+  </footer>
+
+  <script src="../services/indexServices.js"></script>
+  <script src="../js/analisis.js"></script>
 </body>
 </html>
