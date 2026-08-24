@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitudes & Scoring de IA - PROCOMER</title>
+  
+  <!-- Tipografía Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="../styles/solicitudess.css">
+</head>
+<body class="bg-light">
+
+  <div class="app-layout">
+    <!-- Sidebar / Menú Lateral -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-container">
+          <img src="../img/esencial-removebg-preview.png" alt="Logo Secundario" class="secondary-logo">
+          <img src="../img/PROCOMER.png" alt="PROCOMER" class="sidebar-logo">
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="./analista-dashboard.html" class="nav-item">
+          <i class="fa-solid fa-border-all"></i>
+          <span>Dashboard de Métricas</span>
+        </a>
+        <a href="./solicitudes.html" class="nav-item active">
+          <i class="fa-solid fa-chart-simple"></i>
+          <span>Solicitudes y Scoring IA</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-regular fa-address-book"></i>
+          <span>Directorio de Cumplimiento</span>
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Configuración</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-wrapper">
+      
+      <!-- Top Navbar -->
+      <header class="topbar">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="input-search" placeholder="Search companies, requests...">
+        </div>
+
+        <div class="topbar-right">
+          <button class="icon-nav-btn"><i class="fa-regular fa-bell"></i></button>
+          <div class="user-profile">
+            <div class="user-info">
+              <span class="user-name">Analista Senior</span>
+              <span class="user-role">PROCOMER HQ</span>
+            </div>
+            <div class="avatar"><i class="fa-solid fa-user"></i></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <section class="content-body">
+        
+        <!-- Header de la Sección -->
+        <div class="page-header">
+          <h1 class="page-title">Solicitudes & Scoring de IA</h1>
+          <p class="page-subtitle">Gestión centralizada de solicitudes de régimen definitivo y zona franca, con análisis predictivo de viabilidad.</p>
+        </div>
+
+        <!-- Card Contenedora Principal -->
+        <div class="card-container">
+          
+          <!-- Filtros Superiores -->
+          <div class="filter-bar">
+            <div class="filter-tabs">
+              <button class="tab-btn active" data-filter="todas">Todas (<span id="total-count">0</span>)</button>
+              <button class="tab-btn" data-filter="pendiente">Pendientes</button>
+              <button class="tab-btn" data-filter="aprobada">Evaluadas</button>
+            </div>
+
+            <div class="filter-actions">
+              <!-- Desplegable Score IA -->
+              <div class="dropdown-container">
+                <button id="btn-score-dropdown" class="btn-filter">
+                  <span id="label-score">Score IA: Todos</span>
+                  <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div id="menu-score" class="dropdown-menu">
+                  <div class="dropdown-item" data-score="todos">Score IA: Todos</div>
+                  <div class="dropdown-item" data-score="alto">Score Alto (&gt;80)</div>
+                  <div class="dropdown-item" data-score="medio">Score Medio (50-80)</div>
+                  <div class="dropdown-item" data-score="bajo">Score Bajo (&lt;50)</div>
+                </div>
+              </div>
+
+              <!-- Ordenar Fecha -->
+              <button id="btn-order-date" class="btn-filter">
+                <i class="fa-solid fa-arrow-down-short-wide"></i>
+                <span id="label-date">Fecha más reciente</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tabla de Solicitudes -->
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID & FECHA</th>
+                  <th>EMPRESA & SECTOR</th>
+                  <th>DATOS CLAVE</th>
+                  <th class="text-center">SCORE IA</th>
+                  <th class="text-center">ESTADO</th>
+                  <th class="text-center">ACCIÓN</th>
+                </tr>
+              </thead>
+              <tbody id="table-body">
+                <!-- Se renderiza desde solicitudes.js -->
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- Drawer / Panel Lateral de Evaluación -->
+  <div id="drawer-overlay" class="drawer-overlay"></div>
+  <aside id="side-drawer" class="side-drawer">
+    <div class="drawer-header">
+      <div>
+        <span class="drawer-tag">EVALUACIÓN IA</span>
+        <h2 id="drawer-empresa-nombre" class="drawer-title">--</h2>
+        <span id="drawer-empresa-id" class="drawer-id">#--</span>
+      </div>
+      <button id="btn-close-drawer" class="btn-close-drawer"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="drawer-body">
+      <!-- Score Predictivo Card -->
+      <div class="drawer-score-card">
+        <div id="drawer-score-circle" class="drawer-circle pending">--</div>
+        <div class="drawer-score-info">
+          <h4 id="drawer-score-title">Evaluación Predictiva</h4>
+          <p id="drawer-score-desc">Calculando viabilidad y nivel de riesgo para el régimen solicitado...</p>
+        </div>
+      </div>
+
+      <!-- Matriz de Cumplimiento -->
+      <h3 class="drawer-section-title">MATRIZ DE CUMPLIMIENTO NORMATIVO</h3>
+      <div class="matrix-grid">
+        <div class="matrix-card success">
+          <i class="fa-regular fa-circle-check"></i>
+          <div>
+            <strong>Nivel de Inversión</strong>
+            <p id="drawer-inversion-text">Supera umbral mínimo ($15M proyectado)</p>
+          </div>
+        </div>
+        <div class="matrix-card success">
+          <i class="fa-regular fa-circle-check"></i>
+          <div>
+            <strong>Creación de Empleo</strong>
+            <p id="drawer-empleo-text">350 empleos directos validados en planillas proyectadas.</p>
+          </div>
+        </div>
+        <div class="matrix-card success">
+          <i class="fa-regular fa-circle-check"></i>
+          <div>
+            <strong>Sector Estratégico</strong>
+            <p id="drawer-sector-text">Alineado con cluster de alta tecnología.</p>
+          </div>
+        </div>
+        <div class="matrix-card danger">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <div>
+            <strong>Soporte Legal</strong>
+            <p>Falta firma digital en anexo B. Requiere subsanación menor.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notas del Analista -->
+      <h3 class="drawer-section-title">NOTAS DEL ANALISTA</h3>
+      <textarea id="drawer-notas" class="drawer-textarea" placeholder="Añade observaciones sobre la evaluación de la IA o requerimientos específicos..."></textarea>
+    </div>
+
+    <div class="drawer-footer">
+      <button id="btn-rechazar" class="btn-drawer-danger">Rechazar / Subsanar</button>
+      <button id="btn-aprobar" class="btn-drawer-success">Aprobar y Enviar a Legal</button>
+    </div>
+  </aside>
+
+  <script src="../js/solicitudes.js"></script>
+</body>
+</html>
