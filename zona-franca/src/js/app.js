@@ -1,5 +1,7 @@
 // src/js/app.js
 
+import { crearSolicitud, autenticarUsuario } from '../services/indexServices.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   // -------------------------------------------------------------
   // 1. Manejo del Formulario de Solicitud Zona Franca
@@ -15,12 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const btnSubmit = formSolicitud.querySelector('button[type="submit"]');
       if (btnSubmit) btnSubmit.disabled = true;
 
+      // Extracción de todos los campos del formulario actualizados
       const nuevaSolicitud = {
+        empresa: document.getElementById('nombre-empresa')?.value || 'Sin Nombre',
         sector: document.getElementById('sector').value,
-        inversionMinima: Number(document.getElementById('inversion-minima').value),
-        inversionProyectada: Number(document.getElementById('inversion-proyectada').value),
-        empleosEsperados: Number(document.getElementById('empleos').value),
-        fecha: new Date().toLocaleDateString('es-CR')
+        tipoOperacion: document.getElementById('tipo-operacion').value,
+        ubicacion: document.getElementById('ubicacion').value,
+        inversionMinima: Number(document.getElementById('inversion-minima').value) || 0,
+        inversionProyectada: Number(document.getElementById('inversion-proyectada').value) || 0,
+        empleosEsperados: Number(document.getElementById('empleos').value) || 0,
+        comprasLocales: Number(document.getElementById('compras-locales').value) || 0,
+        certificacionAmbiental: document.getElementById('certificacion-ambiental').value,
+        fecha: new Date().toLocaleDateString('es-CR'),
+        estado: 'pendiente', // CORREGIDO: En minúscula para coincidir con la lógica del panel
+        score: null          // AGREGADO: Asegura que empiece sin evaluar para mostrar el botón
       };
 
       try {

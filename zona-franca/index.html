@@ -17,19 +17,16 @@
 </head>
 <body>
 
-
-
   <!-- Header -->
   <header class="header">
     <div class="container header-container">
       <div class="logo">
-        <img class="logo-box" src="./src/img/esencial-removebg-preview.png"></img>
-        <img class="logo-text" src="./src/img/procomer.png"></img>
+        <img class="logo-box" src="./src/img/esencial-removebg-preview.png" alt="Esencial Costa Rica">
+        <img class="logo-text" src="./src/img/procomer.png" alt="PROCOMER">
       </div>
       <div class="header-right">
         <button class="icon-btn" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
         <a href="./src/pages/login.html" class="texto-login">Panel administrativo</a>
-
       </div>
     </div>
   </header>
@@ -88,7 +85,6 @@
           <i class="fa-solid fa-briefcase"></i>
           <span>Servicios</span>
         </a>
-        <!-- Reemplaza el enlace de Solicitudes en el quick-nav por este con id: -->
         <a href="#" id="btn-solicitudes" class="quick-item btn-open-modal">
           <i class="fa-solid fa-file-signature"></i>
           <span>Solicitudes</span>
@@ -160,7 +156,7 @@
             <h3>Zona Franca</h3>
             <p>Gestione su solicitud de Régimen de Zona Franca de manera digital y simplificada.</p>
             <a href="#" class="btn-light btn-open-modal">Solicitar Aquí</a>
-</div>
+          </div>
         </div>
       </div>
     </section>
@@ -267,78 +263,130 @@
   </footer>
 
   <!-- MODAL: Solicitud de Ingreso al Régimen de Zona Franca -->
-<div id="modal-solicitud" class="modal-overlay">
-  <div class="modal-container">
-    
-    <!-- Modal Header -->
-    <div class="modal-header">
-      <div>
-        <h2 class="modal-title">Solicitud de Ingreso al Régimen de Zona Franca</h2>
-        <p class="modal-subtitle">Complete los datos preliminares de su proyecto para la evaluación inicial de elegibilidad.</p>
+  <div id="modal-solicitud" class="modal-overlay">
+    <div class="modal-container">
+      
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title">Solicitud de Ingreso al Régimen de Zona Franca</h2>
+          <p class="modal-subtitle">Complete los datos preliminares de su proyecto para la evaluación inicial de elegibilidad según la Ley N° 7210.</p>
+        </div>
+        <button class="modal-close-btn" id="modal-close">&times;</button>
       </div>
-      <button class="modal-close-btn" id="modal-close">&times;</button>
+
+      <!-- Modal Body / Form -->
+      <form id="form-zona-franca" class="modal-body">
+        <div class="form-grid">
+          
+          <!-- Nombre de la Empresa -->
+          <div class="form-group">
+            <label for="nombre-empresa">Nombre de la Empresa / Proyecto</label>
+            <input type="text" id="nombre-empresa" class="form-control" placeholder="Ej. Tech Solutions CR S.A." required>
+          </div>
+
+          <!-- Sector Estratégico -->
+          <div class="form-group">
+            <label for="sector">Sector Productivo</label>
+            <select id="sector" class="form-control" required>
+              <option value="" disabled selected>Seleccione un sector</option>
+              <option value="Tecnología">Tecnología y Software</option>
+              <option value="Business Process Outsourcing">Business Process Outsourcing (BPO)</option>
+              <option value="Manufactura Avanzada">Manufactura Avanzada / Dispositivos Médicos</option>
+              <option value="Ciencias de la Vida">Ciencias de la Vida</option>
+              <option value="Logística y Cadena de Suministro">Logística y Cadena de Suministro</option>
+              <option value="Otro">Otro Sector</option>
+            </select>
+          </div>
+
+          <!-- Tipo de Operación -->
+          <div class="form-group">
+            <label for="tipo-operacion">Tipo de Operación</label>
+            <select id="tipo-operacion" class="form-control" required>
+              <option value="" disabled selected>Seleccione el tipo de operación</option>
+              <option value="Procesadora de Exportación">Procesadora de Exportación</option>
+              <option value="Servicios">Empresa de Servicios</option>
+              <option value="Comercializadora">Comercializadora</option>
+              <option value="Investigación y Desarrollo">Investigación y Desarrollo (I+D)</option>
+            </select>
+          </div>
+
+          <!-- Ubicación Geográfica -->
+          <div class="form-group">
+            <label for="ubicacion">Ubicación del Proyecto</label>
+            <select id="ubicacion" class="form-control" required>
+              <option value="" disabled selected>Seleccione la ubicación</option>
+              <option value="Fuera de GAMA">Fuera de GAMA (Incentivo Regional)</option>
+              <option value="Dentro de GAMA">Dentro de GAMA (Gran Área Metropolitana)</option>
+            </select>
+          </div>
+
+          <!-- Inversión Mínima Requerida -->
+          <div class="form-group">
+            <label for="inversion-minima">Inversión Mínima Requerida (USD $)</label>
+            <input type="number" id="inversion-minima" class="form-control" placeholder="Mínimo según ley ($100k fuera / $150k en GAMA)" min="0" required>
+          </div>
+
+          <!-- Inversión Proyectada -->
+          <div class="form-group">
+            <label for="inversion-proyectada">Inversión Proyectada (USD $)</label>
+            <input type="number" id="inversion-proyectada" class="form-control" placeholder="Monto proyectado en activos fijos" min="0" required>
+          </div>
+
+          <!-- Empleos Directos -->
+          <div class="form-group">
+            <label for="empleos">Empleos Directos a Crear</label>
+            <input type="number" id="empleos" class="form-control" placeholder="Plazas proyectadas (Mínimo 15)" min="0" required>
+          </div>
+
+          <!-- Compras a PYMES Locales (%) -->
+          <div class="form-group">
+            <label for="compras-locales">Encadenamiento Local (% Compras a PYMES)</label>
+            <input type="number" id="compras-locales" class="form-control" placeholder="Porcentaje estimado (0-100%)" min="0" max="100" required>
+          </div>
+
+          <!-- Certificación Ambiental -->
+          <div class="form-group">
+            <label for="certificacion-ambiental">Certificación Ambiental / Sostenibilidad</label>
+            <select id="certificacion-ambiental" class="form-control" required>
+              <option value="" disabled selected>¿Posee o contempla certificaciones?</option>
+              <option value="Sí">Sí (ISO 14001, Carbono Neutral, Bandera Azul, etc.)</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- File Upload Box -->
+        <div class="form-group file-upload-group">
+          <label>Documentos de Respaldo (Plan de Inversión / Diagrama Operativo)</label>
+          <div class="dropzone">
+            <i class="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
+            <p class="dropzone-text">Arrastre aquí sus documentos de respaldo o <span>examine su equipo</span></p>
+            <span class="dropzone-hint">Formatos permitidos: PDF, ZIP (Máx 10MB)</span>
+            <input type="file" class="file-input" multiple>
+          </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <div class="privacy-note">
+            <i class="fa-solid fa-lock"></i>
+            <span>Sus datos están protegidos y serán analizados por el motor de evaluación de PROCOMER.</span>
+          </div>
+          
+          <div class="modal-actions">
+            <button type="button" class="btn-secondary" id="modal-cancel">Cancelar</button>
+            <button type="submit" class="btn-primary">Enviar Solicitud a Evaluación</button>
+          </div>
+        </div>
+      </form>
+
     </div>
-
-    <!-- Modal Body / Form -->
-    <form id="form-zona-franca" class="modal-body">
-      <div class="form-grid">
-        
-        <div class="form-group">
-          <label for="sector">Sector Productivo</label>
-          <select id="sector" class="form-control">
-            <option value="dispositivos">Tecnología</option>
-            <option value="servicios">Business Process Outsourcing</option>
-            <option value="manufactura">Manufactura Avanzada</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-  <label for="inversion-minima">Inversión Mínima Requerida (CRC)</label>
-  <input type="number" id="inversion-minima" class="form-control" placeholder="Ingrese el monto mínimo en ₡" min="0" required>
-</div>
-
-<div class="form-group">
-  <label for="inversion-proyectada">Inversión Proyectada (CRC)</label>
-  <input type="number" id="inversion-proyectada" class="form-control" placeholder="Ingrese el monto proyectado en ₡" min="0" required>
-</div>
-
-        <div class="form-group">
-          <label for="empleos">Empleos Mínimos Esperados</label>
-          <input type="number" id="empleos" class="form-control" placeholder="Cantidad de empleos">
-        </div>
-
-      </div>
-
-      <!-- File Upload Box -->
-      <div class="form-group file-upload-group">
-        <label>Documentos de Respaldo</label>
-        <div class="dropzone">
-          <i class="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
-          <p class="dropzone-text">Arrastre aquí sus documentos de respaldo o <span>examine su equipo</span></p>
-          <span class="dropzone-hint">Formatos permitidos: PDF, ZIP (Máx 10MB)</span>
-          <input type="file" class="file-input" multiple>
-        </div>
-      </div>
-
-      <!-- Modal Footer (Con corrección de alineación y scroll) -->
-      <div class="modal-footer">
-        <div class="privacy-note">
-          <i class="fa-solid fa-lock"></i>
-          <span>Sus datos están protegidos y serán analizados por el motor de evaluación de PROCOMER.</span>
-        </div>
-        
-        <div class="modal-actions">
-          <button type="button" class="btn-secondary" id="modal-cancel">Cancelar</button>
-          <button type="submit" class="btn-primary">Enviar Solicitud a Evaluación</button>
-        </div>
-      </div>
-    </form>
-
   </div>
-</div>
 
-<!-- Script JS para interacciones de la Modal -->
- <script src="./src/services/indexServices.js"></script>
-<script src="./src/js/app.js"></script>
+  <!-- Scripts -->
+  <script type="module" src="./src/services/indexServices.js"></script>
+  <script type="module" src="./src/js/app.js"></script>
 </body>
 </html>

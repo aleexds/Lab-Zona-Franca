@@ -29,12 +29,12 @@
       </div>
       
       <nav class="sidebar-nav">
-        <a href="#" class="nav-item active">
+        <a href="./analisis.html" class="nav-item active">
           <i class="fa-solid fa-border-all"></i>
           <span>Dashboard de Métricas</span>
         </a>
-        <a href="#" class="nav-item">
-          <i class="fa-solid fa-square-check"></i>
+        <a href="./solicitudes.html" class="nav-item">
+          <i class="fa-solid fa-chart-simple"></i>
           <span>Solicitudes y Scoring IA</span>
         </a>
         <a href="#" class="nav-item">
@@ -43,7 +43,7 @@
         </a>
         <a href="#" class="nav-item">
           <i class="fa-solid fa-sliders"></i>
-          <span>Configuración de IA</span>
+          <span>Configuración</span>
         </a>
       </nav>
     </aside>
@@ -73,7 +73,7 @@
           <div class="user-profile">
             <div class="user-info">
               <span class="user-name">Analista Senior</span>
-              <span class="user-role">Zona Franca</span>
+              <span class="user-role">PROCOMER HQ</span>
             </div>
             <div class="user-avatar">
               <i class="fa-regular fa-user"></i>
@@ -91,10 +91,7 @@
             <h1 class="page-title">Panel de Analista e Inteligencia de Negocios</h1>
             <p class="page-subtitle">Resumen de solicitudes activas, evaluaciones del motor de IA y estado de cumplimiento general.</p>
           </div>
-          <button class="btn-export">
-            <i class="fa-solid fa-download"></i>
-            <span>Exportar Reporte</span>
-          </button>
+          
         </div>
 
         <!-- 4 KPI Metric Cards -->
@@ -108,8 +105,8 @@
             </div>
             <span class="metric-label">SOLICITUDES EN COLA</span>
             <div class="metric-value-wrapper">
-              <span class="metric-value">42</span>
-              <span class="trend-indicator positive"><i class="fa-solid fa-arrow-up"></i> 12%</span>
+              <span class="metric-value">7</span>
+              <span class="trend-indicator positive"><i class="fa-solid fa-arrow-up"></i> 2%</span>
             </div>
           </div>
 
@@ -134,7 +131,7 @@
             </div>
             <span class="metric-label">EMPRESAS EN ALERTA</span>
             <div class="metric-value-wrapper">
-              <span class="metric-value">5</span>
+              <span class="metric-value">1</span>
             </div>
           </div>
 
@@ -147,7 +144,7 @@
             </div>
             <span class="metric-label">APROBADAS</span>
             <div class="metric-value-wrapper">
-              <span class="metric-value">128</span>
+              <span class="metric-value">5</span>
             </div>
           </div>
         </div>
@@ -176,13 +173,13 @@
                   </tr>
                 </thead>
                 <tbody id="tabla-solicitudes-body">
-                  <!-- JS poblará las solicitudes aquí dinámicamente desde db.json -->
+                  <!-- JS poblará las solicitudes aquí dinámicamente -->
                 </tbody>
               </table>
             </div>
 
             <div class="card-footer">
-              <a href="#" class="footer-link">Ver todas las solicitudes <i class="fa-solid fa-arrow-right"></i></a>
+              <a href="./solicitudes.html" class="footer-link">Ver todas las solicitudes <i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </section>
 
@@ -273,7 +270,7 @@
     </div>
   </footer>
 
-  <script src="../services/indexServices.js"></script>
-  <script src="../js/analisis.js"></script>
+  <script type="module" src="../services/indexServices.js"></script>
+  <script type="module" src="../js/analisis.js"></script>
 </body>
 </html>

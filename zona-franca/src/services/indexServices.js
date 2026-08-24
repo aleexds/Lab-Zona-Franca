@@ -17,7 +17,7 @@ async function obtenerBaseDatos() {
   }
 }
 
-async function autenticarUsuario(correo, password) {
+export async function autenticarUsuario(correo, password) {
   const db = await obtenerBaseDatos();
 
   if (!db || !db.usuarios) {
@@ -34,9 +34,9 @@ async function autenticarUsuario(correo, password) {
 
   let redirectUrl = '';
   if (usuarioEncontrado.rol === 'admin') {
-    redirectUrl = './admin-dashboard.html'; 
+    redirectUrl = './admin.html'; 
   } else if (usuarioEncontrado.rol === 'analista') {
-    redirectUrl = './analista-dashboard.html'; 
+    redirectUrl = './analisis.html'; 
   }
 
   return {
@@ -56,14 +56,20 @@ async function autenticarUsuario(correo, password) {
 // ==========================================
 
 // Enviar una nueva solicitud al servidor Node (Usado en index.html)
-async function crearSolicitud(datosFormulario) {
+export async function crearSolicitud(datosFormulario) {
   try {
     const respuesta = await fetch('http://localhost:3000/solicitudes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(datosFormulario)
     });
-    return await respuesta.json();
+
+    if (!respuesta.ok) {
+      throw new Error('Error en la respuesta del servidor');
+    }
+
+    const data = await respuesta.json();
+    return { success: true, data };
   } catch (error) {
     console.error('Error enviando solicitud:', error);
     return { success: false, mensaje: 'No se pudo conectar con el servidor.' };
@@ -71,9 +77,12 @@ async function crearSolicitud(datosFormulario) {
 }
 
 // Obtener todas las solicitudes guardadas (Usado en analista-dashboard.html)
-async function obtenerSolicitudes() {
+export async function obtenerSolicitudes() {
   try {
     const respuesta = await fetch('http://localhost:3000/solicitudes');
+    if (!respuesta.ok) {
+      throw new Error('Error al consultar el servidor');
+    }
     return await respuesta.json();
   } catch (error) {
     console.error('Error al obtener solicitudes:', error);
